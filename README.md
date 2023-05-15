@@ -71,18 +71,7 @@ Pour tester simplement & rapidement, je vous invite à cloner le project.
 clonez le projet :
 
 ```terminal
-git clone https://github.com/Aeron01/OC-Projet_6_Portfolio-architecte-sophie-bluel.git
+git clone https://github.com/Aeron01/OC-Projet6.git
 ```
 
-Installez les dépendances
-
-```terminal
-cd Backend
-npm install
-```
-
-Et lancez le serveur !
-
-```terminal
-npm start
-```
+Lancer "liveServer" sur index.html.

@@ -342,20 +342,15 @@ footer nav ul {
     color: black;
 }
 
-.login span {
-    color: red;
-    font-weight: bold;
-    text-decoration: underline;
-    font-size: 18px;
-    padding: 5px;
-}
-
-.loginStat {
-    display: none;
+.hidden {
+    display: none !important;
 }
 
 .loginError{
-    display: none;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
 }
 
 .editorMod {
@@ -372,9 +367,6 @@ footer nav ul {
     font-weight: 400;
 }
 
-.editorOff {
-    display: none;
-}
 
 #publishing {
     width: 216px;

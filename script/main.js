@@ -1,6 +1,7 @@
-window.onload=()=>{
+window.onload=async ()=>{
     loadHeader();
     loadFooter();
     createNavigation();
-    logout();
+    const data = await loadData();
+    createCards(data);
 }

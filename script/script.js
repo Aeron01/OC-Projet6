@@ -1,6 +1,6 @@
 function loadHeader(){
     document.querySelector("header").innerHTML=`
-    <div class="editorMod editorOff">
+    <div class="editorMod hidden">
         <span class="far fa-pen-to-square"></span>
         <span>Mode édition</span>
         <span id="publishing">publier les changements</<span>
@@ -12,26 +12,20 @@ function loadHeader(){
                 <li id="nav-projects" class="nav-link">projets</li>
                 <li id="nav-contact" class="nav-link">contact</li>
                 <li id="nav-login" class="nav-link">login</li>
-                <li id="nav-logout" class="nav-link loginStat">logout</li>
                 <li id="nav-instagram" class="nav-link"><img src="./assets/icons/instagram.png" alt="Instagram"></li>
             </ul>
         </nav>
     </div>
     `;
-
-    if (localStorage.length === 1) {
-        console.log("connecter");
-        const logedOut = document.getElementById("nav-logout");
-        const logedIn = document.getElementById("nav-login");
-        const editorOn = document.querySelector(".editorMod");
-        logedIn.classList.add("loginStat");
-        logedOut.classList.remove("loginStat");
-        editorOn.classList.remove("editorOff");
+    const logedIn = document.getElementById("nav-login");
+    const editorOn = document.querySelector(".editorMod");
+    const token=localStorage.getItem("token");
+    if(token){
+        logedIn.textContent="logout";
+        editorOn.classList.remove("hidden");
     } else {
-        console.log("non connecter");
-        const logedOut = document.getElementById("nav-logout");
-        const logedIn = document.getElementById("nav-login");
-        logedIn.classList.remove("loginStat");
+        logedIn.textContent="login";
+        editorOn.classList.add("hidden");
     }
 }
 
@@ -53,7 +47,6 @@ function createNavigation () {
         {id:"nav-projects", link: "./index.html#portfolio"},
         {id:"nav-contact", link: "./index.html#contact"},
         {id:"nav-login", link: "./login.html"},
-        //{id:"nav-logout", link: "./login.html"},
         {id:"nav-instagram", link: "https://www.instagram.com/sophiebluel/"},
         {id:"nav-cgu", link: "./legal-mention.html"},
     ];
@@ -68,20 +61,44 @@ function createNavigation () {
         }
     }
 
+    logButton();
+
 }
 
 
 
-function logout () {
-    const logedOut = document.getElementById("nav-logout");
-    logedOut.onclick=()=> {
-        localStorage.removeItem("Ma clé");
-        window.location.href="./index.html";
+function logButton () {
+    const logedBtn = document.getElementById("nav-login");
+    logedBtn.onclick=()=> {
+        const token=localStorage.getItem("token");
+        if(token){
+            localStorage.removeItem("token");
+            window.location.href="./index.html";
+        } else {
+            window.location.href="./login.html";
+        }
     }
 }
 
-/*function loadNav () {   
-    document.querySelector("header h1").onclick= ()=>{
-        window.location.href="./index.html"
-    }
-}*/
+
+function createCard (card,parent){
+    const figure=document.createElement("figure")
+    const img=document.createElement("img")
+    const caption=document.createElement("figcaption")
+    img.src=card.imageUrl
+    img.alt=card.title
+    caption.textContent=card.title
+    figure.id=card.id
+    figure.categoryId=card.categoryId
+    figure.appendChild(img)
+    figure.appendChild(caption)
+    parent.appendChild(figure)
+}
+
+function createCards (data){
+    const container=document.querySelector(".gallery")
+    console.log(data)
+    data.map((card)=>{
+        createCard(card, container)
+    })
+}

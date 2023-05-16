@@ -35,6 +35,6 @@ window.onload=async()=>{
         localStorage.setItem("Ma clé",result.token);
         const myToken=localStorage.getItem("Ma clé");
         console.log(myToken);
-        window.location.href="./projet.html";
+        window.location.href="./index.html";
     }
 }

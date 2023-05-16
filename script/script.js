@@ -1,25 +1,34 @@
 function loadHeader(){
     document.querySelector("header").innerHTML=`
-    <h1 id="nav-home" class="nav-link">Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li id="nav-projects" class="nav-link">projets</li>
-			<li id="nav-contact" class="nav-link">contact</li>
-			<li id="nav-login" class="nav-link">login</li>
-            <li id="nav-logout" class="nav-link loginStat">logout</li>
-			<li id="nav-instagram" class="nav-link"><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
+    <div class="editorMod editorOff">
+        <span class="far fa-pen-to-square"></span>
+        <span>Mode édition</span>
+        <span id="publishing">publier les changements</<span>
+    </div>
+    <div class="headerContainer">
+        <h1 id="nav-home" class="nav-link">Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        <nav>
+            <ul>
+                <li id="nav-projects" class="nav-link">projets</li>
+                <li id="nav-contact" class="nav-link">contact</li>
+                <li id="nav-login" class="nav-link">login</li>
+                <li id="nav-logout" class="nav-link loginStat">logout</li>
+                <li id="nav-instagram" class="nav-link"><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+            </ul>
+        </nav>
+    </div>
     `;
 
     if (localStorage.length === 1) {
-        console.log("connecter")
+        console.log("connecter");
         const logedOut = document.getElementById("nav-logout");
         const logedIn = document.getElementById("nav-login");
+        const editorOn = document.querySelector(".editorMod");
         logedIn.classList.add("loginStat");
         logedOut.classList.remove("loginStat");
+        editorOn.classList.remove("editorOff");
     } else {
-        console.log("non connecter")
+        console.log("non connecter");
         const logedOut = document.getElementById("nav-logout");
         const logedIn = document.getElementById("nav-login");
         logedIn.classList.remove("loginStat");

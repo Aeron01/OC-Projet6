@@ -31,10 +31,15 @@ window.onload=async()=>{
         console.log("token:"+result.token);
         console.log("user ID:"+result.userId);
 
-
-        localStorage.setItem("Ma clé",result.token);
-        const myToken=localStorage.getItem("Ma clé");
-        console.log(myToken);
-        window.location.href="./index.html";
+        if (result.userId != 1) {
+            const logError= document.querySelector(".loginError")
+                console.log(result)
+                logError.classList.remove("loginError");
+        } else {
+            localStorage.setItem("Ma clé",result.token);
+            const myToken=localStorage.getItem("Ma clé");
+            console.log(myToken);
+            window.location.href="./index.html";
+        }
     }
 }

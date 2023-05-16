@@ -342,7 +342,19 @@ footer nav ul {
     color: black;
 }
 
+.login span {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 18px;
+    padding: 5px;
+}
+
 .loginStat {
+    display: none;
+}
+
+.loginError{
     display: none;
 }
 

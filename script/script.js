@@ -81,7 +81,7 @@ function logButton () {
 }
 
 
-function createCard (card,parent){
+function createCard (card, parent){
     const figure=document.createElement("figure")
     const img=document.createElement("img")
     const caption=document.createElement("figcaption")
@@ -102,3 +102,6 @@ function createCards (data){
         createCard(card, container)
     })
 }
+
+/*--- faire un bouton clickable, qui change de couleur et qui rend visible que la categories d'images associer au bouton ---*/
+

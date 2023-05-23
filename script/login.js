@@ -3,7 +3,7 @@ window.onload=async()=>{
     loadFooter();
     createNavigation();
 
-    // je dois récuperer les valeur email et password qu'envois submit du bouton pour remplacer ceux de user
+
     const form = document.querySelector("form")
     form.onsubmit=(event)=> {
         event.preventDefault()
@@ -13,8 +13,6 @@ window.onload=async()=>{
         logError.textContent="";
 
 
-        //console.log(email)
-        //console.log(password)
         const user={
             //email: 'sophie.bluel@test.tld', password: 'S0phie'
             email: email.value,

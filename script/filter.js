@@ -1,21 +1,19 @@
-async function loadFilter () {
+async function loadFilter (data) {
 
-/*const all=document.getElementById("all");
-const object=document.getElementById("object");
-const appartment=document.getElementById("appartment");
-const hostelResto=document.getElementById("hostel&Resto");*/
+let filters = document.querySelectorAll("#filters span");
+let pictures = document.querySelectorAll("#portfolio figure");
 
-let filters = document.querySelectorAll("#filters span")
+
+//console.log(pictures)
     for(let filter of filters){
         filter.addEventListener("click", function(){
-            let tag = this.id;
+            let tag = parseInt(this.id);
+            //filter.classList.add("active");
+            for(let picture of pictures){              
+                picture.classList.add("hidden");
 
-            let pictures = document.querySelectorAll("#gallery figure")
-            for(let picture of pictures){
-                picture.classList.add("hidden")
-
-                if (tag in picture.dataset || tag === "all"){
-                    picture.classList.remove("hidden")
+                if (tag === picture.categoryId || tag === 0){
+                    picture.classList.remove("hidden");
                 }
             }
         });

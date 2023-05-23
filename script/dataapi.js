@@ -8,7 +8,7 @@ async function loadData(){
         
     })
     .then(data=>{
-        console.log(data)
+        //console.log(data)
         return data
     })
     .catch(err=>{

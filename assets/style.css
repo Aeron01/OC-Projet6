@@ -346,6 +346,7 @@ footer nav ul {
 
 .hidden {
     display: none !important;
+    transition: widht 0.3s;
 }
 
 .loginError{

@@ -97,7 +97,7 @@ function createCard (card, parent){
 
 function createCards (data){
     const container=document.querySelector(".gallery")
-    console.log(data)
+    //console.log(data)
     data.map((card)=>{
         createCard(card, container)
     })
@@ -105,3 +105,22 @@ function createCards (data){
 
 /*--- faire un bouton clickable, qui change de couleur et qui rend visible que la categories d'images associer au bouton ---*/
 
+/*function createFilter (filter, parent){
+    const span=document.createElement("span")
+    parent.
+    span.id=filter.categoryId
+    span.textContent=filter.category.name
+}*/
+
+function createFilters (data){
+    //let tabCatId ="";
+    //let tabCatName ="";
+    
+
+    document.querySelector("#filters").innerHTML=`
+        <span id="0" class="btn filter">Tous</span>
+        <span id="${data[0].categoryId}" class="btn filter">${data[0].category.name}</span>
+        <span id="${data[1].categoryId}" class="btn filter">${data[1].category.name}</span>
+        <span id="${data[2].categoryId}" class="btn filter">${data[2].category.name}</span>
+    `
+}

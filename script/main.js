@@ -4,5 +4,6 @@ window.onload=async ()=>{
     createNavigation();
     const data = await loadData();
     createCards(data);
-    loadFilter();
+    createFilters(data);
+    loadFilter(data);
 }

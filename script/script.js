@@ -1,10 +1,22 @@
-function loadHeader(){
+let _loged = false;
+function loged () {
+    return _loged;
+}
+function initToken () {
+    setToken(localStorage.getItem("token"));
+}
+
+function setToken (token) {
+    _loged = !!token;
+    if (!_loged) {
+        localStorage.removeItem("token")
+    } else {
+        localStorage.setItem("token", token);
+    }
+}
+
+/*export*/ function loadHeader(){
     document.querySelector("header").innerHTML=`
-    <div class="editorMod hidden">
-        <span class="far fa-pen-to-square"></span>
-        <span>Mode édition</span>
-        <span id="publishing">publier les changements</<span>
-    </div>
     <div class="headerContainer">
         <h1 id="nav-home" class="nav-link">Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
@@ -18,15 +30,7 @@ function loadHeader(){
     </div>
     `;
     const logedIn = document.getElementById("nav-login");
-    const editorOn = document.querySelector(".editorMod");
-    const token=localStorage.getItem("token");
-    if(token){
-        logedIn.textContent="logout";
-        editorOn.classList.remove("hidden");
-    } else {
-        logedIn.textContent="login";
-        editorOn.classList.add("hidden");
-    }
+    logedIn.textContent= loged () ? "logout" : "login";
 }
 
 /* une fois connecter prévoire un logout a la place de login pour ce déconnecter */
@@ -70,9 +74,8 @@ function createNavigation () {
 function logButton () {
     const logedBtn = document.getElementById("nav-login");
     logedBtn.onclick=()=> {
-        const token=localStorage.getItem("token");
-        if(token){
-            localStorage.removeItem("token");
+        if(loged()){
+            setToken("");
             window.location.href="./index.html";
         } else {
             window.location.href="./login.html";
@@ -93,43 +96,30 @@ function createCard (card, parent){
     figure.appendChild(img)
     figure.appendChild(caption)
     parent.appendChild(figure)
+    return figure;
 }
 
 function createCards (data){
     const container=document.querySelector(".gallery")
     //console.log(data)
-    data.map((card)=>{
-        createCard(card, container)
-    });
+    return data.map((card)=> createCard(card, container));
 }
 
-/*--- faire un bouton clickable, qui change de couleur et qui rend visible que la categories d'images associer au bouton ---*/
+/*--- Générer de facon dynamique l'apparition du filtre ---*/
 
-/*function createFilter (filter, parent){
-    const span=document.createElement("span")
+function createFilters (categories){
     
-    span.id=filter.categoryId
-    span.textContent=filter.category.name
-    span.classList.add("btn");
-    span.classList.add("disable");
-    span.classList.add("filter");
-    parent.appendChild(span)
-}*/
-
-function createFilters (data){
-    //let tabCatId =[];
-    //let tabCatName ="";
+    categories.unshift({id:0, name:"Tous"});
     const container=document.querySelector("#filters")
-    
-    /*console.log(data[0].categoryId)
-    data.map((filter)=>{
-        createFilter(filter, container)
-    });*/
+    for (let categorie of categories) {
+        const elem = document.createElement("span")
+        elem.textContent = categorie.name;
+        elem.id = categorie.id;
+        elem.classList.add("btn", "filter");
 
-    container.innerHTML=`
-        <span id="0" class="btn disable filter">Tous</span>
-        <span id="${data[0].categoryId}" class="btn disable filter">${data[0].category.name}</span>
-        <span id="${data[1].categoryId}" class="btn disable filter">${data[1].category.name}</span>
-        <span id="${data[2].categoryId}" class="btn disable filter">${data[2].category.name}</span>
-    `
+        container.appendChild(elem);
+        console.log(categorie)
+    }
+
+    selectCategory (container.querySelector("span"));
 }

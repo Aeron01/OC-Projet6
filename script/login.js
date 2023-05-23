@@ -1,3 +1,7 @@
+//import { loadHeader } from "./script.js";
+
+ 
+
 window.onload=async()=>{
     loadHeader();
     loadFooter();
@@ -41,7 +45,7 @@ window.onload=async()=>{
         .then(result=>{
             
             if (!(result.token&&result.userId)) throw "Problème serveur !"           
-            localStorage.setItem("token",result.token);
+            setToken(result.token);
             window.location.href="./index.html";
         })
         .catch(err=>{

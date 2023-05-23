@@ -1,9 +1,14 @@
 window.onload=async ()=>{
+    initToken();
+
     loadHeader();
     loadFooter();
     createNavigation();
-    const data = await loadData();
+    const[cats, data] = await Promise.all( [loadCategories(), loadData()]);
     createCards(data);
-    createFilters(data);
-    loadFilter(data);
+    createFilters(cats);
+    loadCategoriesEventListener();
+    initEdition();
+    enableEdition();
 }
+

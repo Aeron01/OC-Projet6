@@ -1,21 +1,32 @@
-async function loadFilter (data) {
+function loadCategoriesEventListener () {
 
-let filters = document.querySelectorAll("#filters span");
-let pictures = document.querySelectorAll("#portfolio figure");
-
-
-//console.log(pictures)
-    for(let filter of filters){
-        filter.addEventListener("click", function(){
-            let tag = parseInt(this.id);
-            //filter.classList.add("enable");
-            for(let picture of pictures){              
-                picture.classList.add("hidden");
-
-                if (tag === picture.categoryId || tag === 0){
-                    picture.classList.remove("hidden");
-                }
-            }
-        });
+    let categorieElements = document.querySelectorAll("#filters span");
+    
+    
+    
+    for(let categoryElement of categorieElements){
+        categoryElement.addEventListener("click", (ev)=>selectCategory(ev.target));
     }
 }
+
+
+function selectCategory (categorieElement){
+
+    let categorieElements = document.querySelectorAll("#filters span");
+    for(let categorieElement of categorieElements){
+        categorieElement.classList.remove("enable");
+    }
+    categorieElement.classList.add("enable");
+
+    let pictures = document.querySelectorAll("#portfolio figure");
+    let tag = +categorieElement.id;
+            
+    for(let picture of pictures){              
+        picture.classList.add("hidden");
+
+        if (tag === picture.categoryId || tag === 0){
+            picture.classList.remove("hidden");
+        }
+    }
+}
+

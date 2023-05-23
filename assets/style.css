@@ -346,7 +346,6 @@ footer nav ul {
 
 .hidden {
     display: none !important;
-    transition: widht 0.3s;
 }
 
 .loginError{
@@ -376,14 +375,18 @@ footer nav ul {
     height: 38px;
     width: auto;
     padding: 0 2% 0 2%;
-    color: #1D6154;
     font-family: 'Syne';
     font-size: 16px;
     font-weight: 700;
 }
 
-.active {
-    background-color: #1D6154;
+.disable {
+    background: white ;
+    color: #1D6154;
+}
+
+.enable {
+    background: #1D6154;
     color: white;
 }
 

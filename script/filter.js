@@ -8,7 +8,7 @@ let pictures = document.querySelectorAll("#portfolio figure");
     for(let filter of filters){
         filter.addEventListener("click", function(){
             let tag = parseInt(this.id);
-            //filter.classList.add("active");
+            //filter.classList.add("enable");
             for(let picture of pictures){              
                 picture.classList.add("hidden");
 

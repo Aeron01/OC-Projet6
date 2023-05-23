@@ -100,27 +100,36 @@ function createCards (data){
     //console.log(data)
     data.map((card)=>{
         createCard(card, container)
-    })
+    });
 }
 
 /*--- faire un bouton clickable, qui change de couleur et qui rend visible que la categories d'images associer au bouton ---*/
 
 /*function createFilter (filter, parent){
     const span=document.createElement("span")
-    parent.
+    
     span.id=filter.categoryId
     span.textContent=filter.category.name
+    span.classList.add("btn");
+    span.classList.add("disable");
+    span.classList.add("filter");
+    parent.appendChild(span)
 }*/
 
 function createFilters (data){
-    //let tabCatId ="";
+    //let tabCatId =[];
     //let tabCatName ="";
+    const container=document.querySelector("#filters")
     
+    /*console.log(data[0].categoryId)
+    data.map((filter)=>{
+        createFilter(filter, container)
+    });*/
 
-    document.querySelector("#filters").innerHTML=`
-        <span id="0" class="btn filter">Tous</span>
-        <span id="${data[0].categoryId}" class="btn filter">${data[0].category.name}</span>
-        <span id="${data[1].categoryId}" class="btn filter">${data[1].category.name}</span>
-        <span id="${data[2].categoryId}" class="btn filter">${data[2].category.name}</span>
+    container.innerHTML=`
+        <span id="0" class="btn disable filter">Tous</span>
+        <span id="${data[0].categoryId}" class="btn disable filter">${data[0].category.name}</span>
+        <span id="${data[1].categoryId}" class="btn disable filter">${data[1].category.name}</span>
+        <span id="${data[2].categoryId}" class="btn disable filter">${data[2].category.name}</span>
     `
 }

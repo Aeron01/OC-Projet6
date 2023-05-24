@@ -1,4 +1,6 @@
-const editorPanel = (parent=null) => {
+import { modifyButton } from "./modifyIcon.js"
+
+export const editorPanel = (parent=null) => {
     const div = document.createElement("div")
     div.classList.add("editorMod", "Hidden")
     modifyButton("Mode édition", div)

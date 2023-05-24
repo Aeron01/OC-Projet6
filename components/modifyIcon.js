@@ -4,7 +4,7 @@ const modifyIcon = () => {
     return elem
 }
 
-const modifyButton = (name, parent=null) => {
+export const modifyButton = (name, parent=null) => {
     const div = document.createElement("div")
     const nameElement = document.createElement("span")
     nameElement.textContent = name

@@ -223,6 +223,10 @@ li:hover {
 #portfolio h2 {
     text-align: center;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .gallery {
@@ -412,6 +416,9 @@ footer nav ul {
     justify-content: center;*/
     /*gap:12px;*/
     font-size: 14px;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    color: black;
 }
 
 #publishing {
@@ -427,6 +434,5 @@ footer nav ul {
 }
 
 .fa-pen-to-square {    
-    height: 15.7px;
-    width: 15.7px;
+    font-size: 15px;
 }

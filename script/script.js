@@ -1,12 +1,14 @@
+import { selectCategory } from "./filter.js";
+
 let _loged = false;
-function loged () {
+export function loged () {
     return _loged;
 }
-function initToken () {
+export function initToken () {
     setToken(localStorage.getItem("token"));
 }
 
-function setToken (token) {
+export function setToken (token) {
     _loged = !!token;
     if (!_loged) {
         localStorage.removeItem("token")
@@ -15,37 +17,9 @@ function setToken (token) {
     }
 }
 
-/*export*/ function loadHeader(){
-    document.querySelector("header").innerHTML=`
-    <div class="headerContainer">
-        <h1 id="nav-home" class="nav-link">Sophie Bluel <span>Architecte d'intérieur</span></h1>
-        <nav>
-            <ul>
-                <li id="nav-projects" class="nav-link">projets</li>
-                <li id="nav-contact" class="nav-link">contact</li>
-                <li id="nav-login" class="nav-link">login</li>
-                <li id="nav-instagram" class="nav-link"><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
-    </div>
-    `;
-    const logedIn = document.getElementById("nav-login");
-    logedIn.textContent= loged () ? "logout" : "login";
-}
 
-/* une fois connecter prévoire un logout a la place de login pour ce déconnecter */
 
-function loadFooter(){
-    document.querySelector("footer").innerHTML=`
-    <nav>
-		<ul>
-			<li id="nav-cgu" class="nav-link">Mentions Légales</li>
-		</ul>
-	</nav>
-    `;
-}
-
-function createNavigation () {
+export function createNavigation () {
     const links = [
         {id:"nav-home", link: "./index.html"},
         {id:"nav-projects", link: "./index.html#portfolio"},
@@ -68,7 +42,6 @@ function createNavigation () {
     logButton();
 
 }
-
 
 
 function logButton () {
@@ -99,15 +72,15 @@ function createCard (card, parent){
     return figure;
 }
 
-function createCards (data){
+export function createCards (data){
     const container=document.querySelector(".gallery")
     //console.log(data)
     return data.map((card)=> createCard(card, container));
 }
 
-/*--- Générer de facon dynamique l'apparition du filtre ---*/
 
-function createFilters (categories){
+
+export function createFilters (categories){
     
     categories.unshift({id:0, name:"Tous"});
     const container=document.querySelector("#filters")

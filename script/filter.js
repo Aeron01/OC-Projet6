@@ -1,4 +1,4 @@
-function loadCategoriesEventListener () {
+export function loadCategoriesEventListener () {
 
     let categorieElements = document.querySelectorAll("#filters span");
     
@@ -10,7 +10,7 @@ function loadCategoriesEventListener () {
 }
 
 
-function selectCategory (categorieElement){
+export function selectCategory (categorieElement){
 
     let categorieElements = document.querySelectorAll("#filters span");
     for(let categorieElement of categorieElements){

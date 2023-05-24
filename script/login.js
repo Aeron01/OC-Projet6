@@ -1,4 +1,5 @@
-//import { loadHeader } from "./script.js";
+import { loadHeader, loadFooter } from "../layouts/header&Footer.js";
+import { createNavigation, setToken } from "./script.js";
 
  
 

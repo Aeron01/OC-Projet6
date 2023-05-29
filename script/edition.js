@@ -1,5 +1,6 @@
 import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
+import { openModal } from "./modal.js"
 import { loged } from "./script.js"
 
 export const initEdition = () => {
@@ -32,3 +33,7 @@ export const enableEdition = () => {
         modifyBtnPort.classList.add("hidden")
     }
 }
+
+document.querySelectorAll(".js-modal").forEach(a => {
+    a.addEventListener("click", openModal)
+});

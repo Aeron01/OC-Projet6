@@ -305,7 +305,7 @@ footer nav ul {
     padding:0 30px;
 }
 
-.nav-link {
+.nav-link, .js-modal-close {
     cursor: pointer;
 }
 
@@ -435,4 +435,60 @@ footer nav ul {
 
 .fa-pen-to-square {    
     font-size: 15px;
+}
+
+/*--- Modal ---*/
+
+*:focus {
+    box-shadow: 0 0 10px blue;
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 59px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 59px);
+    background:  rgba(0, 0, 0, 0.3);
+}
+
+.modal-wrapper {
+    /*overflow: auto;*/
+    width: 630px;
+    height: 731px;
+    max-width: calc(630px - 26px);
+    max-height: calc(731px - 105px);
+    padding: 26px 30px;
+    background: white;
+    border-radius: 10px;
+}
+
+.js-modal-close {
+    border: none;
+    background: white;
+    display: flex;
+    width: 600px;
+    justify-content:right;
+}
+
+#titlemodal {
+    font-family: 'WorkSans';
+    font-weight: 400;
+    font-size: 26px;
+    color: #000000;
+    margin-bottom: 46px;
+}
+
+.previewpictures {
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 105px;
+    width: 420px;
+    height: 376px;
+    border: 2px solid red;
 }

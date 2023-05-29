@@ -1,4 +1,5 @@
 import { selectCategory } from "./filter.js";
+import { openModal } from "./modal.js";
 
 let _loged = false;
 export function loged () {
@@ -96,3 +97,7 @@ export function createFilters (categories){
 
     selectCategory (container.querySelector("span"));
 }
+
+document.querySelectorAll(".js-modal").forEach(a => {
+    a.addEventListener("click", openModal)
+});

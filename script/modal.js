@@ -14,7 +14,7 @@ const openModal = async function (e) {
     }
 --- Fin de partie Ajax ---*/
 
-export const openModal = async function (e) {
+/*export*/ const openModal = async function (e) {
     e.preventDefault()
     modal = document.querySelector(e.target.getAttribute("href")); // mettre en commentaire cette ligne pour passer en ajax
     focusables = Array.from(modal.querySelectorAll(focusableSelector));
@@ -28,7 +28,7 @@ export const openModal = async function (e) {
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
 }
 
-const closeModal = function (e) {
+/*export*/ const closeModal = function (e) {
     if (modal === null) return;
     if (previouslyFocusElement !== null) previouslyFocusElement.focus();
     e.preventDefault();
@@ -80,9 +80,9 @@ const loadModal = async function (url) {
 }
 ----------------------*/
 
-/*document.querySelectorAll(".js-modal").forEach(a => {
+document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal)
-});*/
+});
 
 window.addEventListener("keydown", function (e) {
     if(e.key === "Escape" || e.key === "Esc") {

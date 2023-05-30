@@ -305,7 +305,11 @@ footer nav ul {
     padding:0 30px;
 }
 
-.nav-link, .js-modal-close {
+#modifyEditor,
+#modifyProfile,
+#modifyPortfolio,
+.nav-link,
+.js-modal-close {
     cursor: pointer;
 }
 

@@ -1,7 +1,6 @@
 const modifyIcon = () => {
     const elem = document.createElement("span")
-    elem.classList.add("far", "fa-pen-to-square", "js-modal")
-    elem.setAttribute("href","#modalgallery")
+    elem.classList.add("far", "fa-pen-to-square")
     return elem
 }
 

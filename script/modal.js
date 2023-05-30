@@ -14,7 +14,7 @@ const openModal = async function (e) {
     }
 --- Fin de partie Ajax ---*/
 
-/*export*/ const openModal = async function (e) {
+/*export*/ const openModal = async function (e) { // mettre en commentaire cette ligne pour passer en ajax
     e.preventDefault()
     modal = document.querySelector(e.target.getAttribute("href")); // mettre en commentaire cette ligne pour passer en ajax
     focusables = Array.from(modal.querySelectorAll(focusableSelector));

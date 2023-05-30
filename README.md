@@ -66,12 +66,37 @@ Gitmoji https://gitmoji.dev/
 
 ## Tester le projet
 
-Pour tester simplement & rapidement, je vous invite à cloner le project.
+Pour tester simplement & rapidement, je vous invite à :
 
-clonez le projet :
+- Récuperer le Backend [ici](https://github.com/OpenClassrooms-Student-Center/Portfolio-architecte-sophie-bluel.git)
+
+- clonez le projet :
 
 ```terminal
 git clone https://github.com/Aeron01/OC-Projet6.git
 ```
 
-Lancer "liveServer" sur index.html.
+- lancer le serveur Backend :
+  Ouvrir un terminal dans le repertoir du serveur backend.
+
+Installer les dépendances du projet.
+
+```terminal
+npm install
+```
+
+- lancer le serveur
+
+````terminal
+npm start
+```
+
+- Compte de test pour Sophie Bluel.
+
+```terminal
+email: sophie.bluel@test.tld
+
+password: S0phie
+````
+
+- Lancer "liveServer" sur index.html.

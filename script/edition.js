@@ -25,7 +25,7 @@ export const enableEdition = () => {
     modifyBtnPort.classList.add("editor", "js-modal")
     modifyBtn.setAttribute("href","#modalgallery")
     modifyBtnPort.setAttribute("href","#modalgallery")
-
+    
     if (loged()) {
         editorPnl.classList.remove("hidden")
         modifyBtn.classList.remove("hidden")

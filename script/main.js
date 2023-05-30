@@ -3,10 +3,11 @@ import { createNavigation, createCards, createFilters, initToken } from "./scrip
 import { loadCategoriesEventListener } from "./filter.js";
 import { initEdition, enableEdition } from "./edition.js";
 import { loadCategories, loadData } from "./dataapi.js";
-//import { closeModal, openModal } from "./modal.js";
+
 
 
 window.onload=async ()=>{
+
     initToken();
 
     loadHeader();
@@ -18,7 +19,5 @@ window.onload=async ()=>{
     loadCategoriesEventListener();
     initEdition();
     enableEdition();
-    //openModal();
-    //closeModal();
 }
 

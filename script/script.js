@@ -1,5 +1,4 @@
 import { selectCategory } from "./filter.js";
-//import { openModal } from "./modal.js";
 
 let _loged = false;
 export function loged () {
@@ -58,7 +57,7 @@ function logButton () {
 }
 
 
-function createCard (card, parent){
+export function createCard (card, parent){
     const figure=document.createElement("figure")
     const img=document.createElement("img")
     const caption=document.createElement("figcaption")
@@ -67,6 +66,7 @@ function createCard (card, parent){
     caption.textContent=card.title
     figure.id=card.id
     figure.categoryId=card.categoryId
+    figure.setAttribute=card.categoryId
     figure.appendChild(img)
     figure.appendChild(caption)
     parent.appendChild(figure)
@@ -96,8 +96,5 @@ export function createFilters (categories){
     }
 
     selectCategory (container.querySelector("span"));
+    
 }
-
-/*document.querySelectorAll(".js-modal").forEach(a => {
-    a.addEventListener("click", openModal)
-});*/

@@ -27,14 +27,31 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
-        <a href="#modalgallery" class="js-modal">Ouvrir la boite modale</a>
         <div id="filters" class="filterContainer">
         </div>
         <aside id="modalgallery" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
             <div class="modal-wrapper js-modal-stop">
-                <button class="js-modal-close">X</button>
-                <h2 id="titlemodal">Galerie photo</h2>
+                <div class="modal-head">
+                    <h2 id="titlemodal">Galerie photo</h2>
+                    <button class="js-modal-close">X</button>
+                </div>
                 <div class="previewpictures"></div>
+            </div>
+        </aside>
+
+        <aside id="modalimg" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
+            <div class="modal-wrapper js-modal-stop">
+                <div class="modal-head">
+                    <h2 id="titlemodal">Galerie photo</h2>
+                    <button class="js-modal-close">X</button>
+                </div>
+                <div class="">
+                    <img src="" alt="" id="image">
+                    <form id="" submit>
+                    <button>uploader</button>
+                    <input id="text">
+                    </form>
+                </div>
             </div>
         </aside>
 		<div class="gallery">
@@ -57,7 +74,6 @@
 
 <footer>
 </footer>
-<script src="./script/modal.js"></script>
 <script src="./script/main.js" type="module"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
-//import { openModal } from "./modal.js"
+import { openModal } from "./modal.js"
 import { loged } from "./script.js"
 
 export const initEdition = () => {
@@ -35,8 +35,39 @@ export const enableEdition = () => {
         modifyBtn.classList.add("hidden")
         modifyBtnPort.classList.add("hidden")
     }
-}
+    document.querySelectorAll(".js-modal").forEach(a => {
+        a.addEventListener("click", (e)=> {
+            // get modal body
+            const modalBody = document.querySelector("#modalgallery .previewpictures");
 
-/*document.querySelectorAll(".js-modal").forEach(a => {
-    a.addEventListener("click", openModal)
-});*/
+            // fill the modal
+            const cards = document.querySelectorAll(".gallery figure")
+
+            cards.forEach(card => {
+
+                // get source image and title
+                const inImg = card.querySelector("img")
+                const inTitle = card.querySelector("figcaption")
+                console.log(inImg.src, inTitle.textContent)
+                
+                // out container for image and title
+                const outFrame = document.createElement("div")
+                outFrame.classList.add("previewpicture")
+
+                // out image
+                const outImg = document.createElement("img")
+                outImg.src = inImg.src
+
+                // out title
+                const outTitle = document.createElement("p")
+                outTitle.textContent = inTitle.textContent
+
+                outFrame.appendChild(outImg)
+                outFrame.appendChild(outTitle)
+                modalBody.appendChild(outFrame)
+            })
+            // open the modal
+            openModal(e, "#modalgallery")
+        })
+    });
+}

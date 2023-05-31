@@ -35,11 +35,21 @@ export const enableEdition = () => {
         modifyBtn.classList.add("hidden")
         modifyBtnPort.classList.add("hidden")
     }
+    //document.querySelectorAll("modalgllery")
     document.querySelectorAll(".js-modal").forEach(a => {
         a.addEventListener("click", (e)=> {
-            // get modal body
-            const modalBody = document.querySelector("#modalgallery .previewpictures");
+            
+            // debut partie ajouter
+            let thisId = ""
+            console.log(a.id)
+            if(a.id == "modifyPortfolio") {
+                console.log("id 1er nodal ok")
+                thisId = "#modalgallery"
+            
+            //fin partie ajouter
 
+            // get modal body
+            const modalBody = document.querySelector("#modalgallery .actualimages"); // ici c'étais #modalgallery a la place du ${}
             // fill the modal
             const cards = document.querySelectorAll(".gallery figure")
 
@@ -48,7 +58,7 @@ export const enableEdition = () => {
                 // get source image and title
                 const inImg = card.querySelector("img")
                 const inTitle = card.querySelector("figcaption")
-                console.log(inImg.src, inTitle.textContent)
+                //console.log(inImg.src, inTitle.textContent)
                 
                 // out container for image and title
                 const outFrame = document.createElement("div")
@@ -66,8 +76,13 @@ export const enableEdition = () => {
                 outFrame.appendChild(outTitle)
                 modalBody.appendChild(outFrame)
             })
+            }
+            if(a.id == "addpicture") {
+                console.log("id add ok")
+                thisId = "#modalimg"
+            }
             // open the modal
-            openModal(e, "#modalgallery")
+                openModal(e, `${thisId}`) // ici c'étais #modalgallery a la place du ${}
         })
     });
 }

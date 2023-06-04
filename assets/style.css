@@ -138,7 +138,7 @@ table {
 body {
     max-width: 1140px;
     margin: auto;
-    font-family: 'Work Sans';
+    font-family: 'Work Sans',sans-serif;
     font-size: 14px;
 }
 
@@ -156,21 +156,21 @@ section {
 h1 {
     display: flex;
     flex-direction: column;
-    font-family: 'Syne';
+    font-family: 'Syne',sans-serif;
     font-size: 22px;
     font-weight: 800;
     color: #B1663C;
 }
 
 h1>span {
-    font-family: 'Work Sans';
+    font-family: 'Work Sans',sans-serif;
     font-size: 10px;
     letter-spacing: 0.1em;
     ;
 }
 
 h2 {
-    font-family: 'Syne';
+    font-family: 'Syne',sans-serif;
     font-weight: 700;
     font-size: 30px;
     color: #1D6154;
@@ -280,7 +280,7 @@ li:hover {
 }
 
 input[type="submit"] {
-    font-family: 'Syne';
+    font-family: 'Syne',sans-serif;
     font-weight: 700;
     color: white;
     background-color: #1D6154;
@@ -384,7 +384,7 @@ footer nav ul {
     height: 38px;
     width: auto;
     padding: 0 2% 0 2%;
-    font-family: 'Syne';
+    font-family: 'Syne',sans-serif;
     font-size: 16px;
     font-weight: 700;
 }
@@ -420,7 +420,7 @@ footer nav ul {
     justify-content: center;*/
     /*gap:12px;*/
     font-size: 14px;
-    font-family: 'Work Sans';
+    font-family: 'Work Sans',sans-serif;
     font-weight: 400;
     color: black;
 }
@@ -436,7 +436,7 @@ footer nav ul {
     border-radius: 60px;
     font-weight: 500;
 }
-
+/*--- Editor & Modal icons ---*/
 .fa-pen-to-square,
 .fa-xmark {    
     font-size: 18px;
@@ -444,6 +444,30 @@ footer nav ul {
 
 .fa-arrow-left {
     font-size: 24px;
+}
+
+.fa-trash-can {
+    font-size: 9px;
+    color: white;
+}
+
+.img-editor-icons {
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    width: 72px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.trash-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17px;
+    height: 17px;
+    background: #000000;
+    border-radius: 2px;
 }
 
 /*--- Modal ---*/
@@ -475,6 +499,11 @@ footer nav ul {
     border-radius: 10px;
 }
 
+#modalimg .modal-wrapper {
+    overflow: unset;
+    height: 670px;
+}
+
 .js-modal-close {
     border: none;
     background: white;
@@ -488,7 +517,7 @@ footer nav ul {
 #titlemodal,
 #titlemodalimg {
     width: 100%;
-    font-family: 'WorkSans';
+    font-family: 'WorkSans', sans-serif;
     font-weight: 400;
     font-size: 26px;
     color: #000000;
@@ -505,12 +534,11 @@ footer nav ul {
     overflow: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
     align-items: center;
     margin: 0px 81px;
     width: 476px;
     height: 470px;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
     gap: 8px;
 }
 
@@ -537,29 +565,122 @@ footer nav ul {
     height: 3rem;
 }
 
+/*--- 2nd Modal ---*/
+
+.previewimage {
+    overflow: unset;
+    gap: unset;
+    justify-content: center;
+    align-items: normal;
+}
+
+.container-add-img,
+.previewimage-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-add-img button,
+.container-add-img p,
+.container-form label,
+.container-form .container-add-img input,
+.container-form .container-add-img select {
+    font-family: 'Work Sans',sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
 .container-add-img {
     width: 100%;
     height: 169px;
     background: #E8F1F6;
     border-radius: 3px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+}
+
+.container-add-img button {
+    width: 173px;
+    height: 36px;
+    background: #CBD6DC;
+    border-radius: 50px;
+    border: none;
+    color: #306685;
+    margin: 7px 0;
+}
+
+.container-add-img p{
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    margin-bottom: 19px;
 }
 
 .previewimage-data {
     width: 100%;
     height: 175px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
-.prevtitle,
-.category-id {
+.previewimage-data form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container-add-img,
+.container-form {
+    max-width: 420px;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 51px;
+    height: auto;
+    gap: 21px;
+    font-size: 14px;
+}
+
+.container-form label {
+    color: #3D3D3D;
+    bottom: 10px;
+}
+
+.container-form .form-add-img input,
+.container-form .form-add-img select {
     padding: 2px 5px;
+    height: 51px;
+    background: white;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    font-weight: 400;
+}
+
+.submit-addimg {
+    margin: 0 81px;
+}
+
+.submit-addimg p {
+    border-bottom: 1px solid #b3b3b3;
+    height: 0;
+    
+    
+}
+
+.btn-validateoff input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    width: 237px;
+    height: 36px;
+    background: #A7A7A7;
+    border: none;
+    border-radius: 60px;
+    color:white;
+
 }

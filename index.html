@@ -58,23 +58,28 @@
                         </form>
                     </div>
                     <div class="previewimage-data">
-                        <form action="" method="get" class="form-add-img">
-                            <label for="prevtitle">Titre</label>
-                            <input id="prevtitle" type="text" name="name" required>
-                        </form>
-                        <form action="">
-                            <label for="prevcategory">Catégorie</label>
-                            <select name="prevcategory" id="category-id" required>
-                                <option value=""></option>
-                                <option value="1">Objets</option>
-                                <option value="2">Appartements</option>
-                                <option value="3">Hotels & restaurants</option>
-                            </select>
-                        </form>
-                        <form action="">
-                            <input type="submit" value="Valider" onclick="">
-                        </form>
+                        <div class="container-form">
+                            <form action="" method="get" class="form-add-img">
+                                <label for="selecttitle">Titre</label>
+                                <input id="selecttitle" type="textarea" name="name" required></input>
+                            </form>
+                            <form action="" class="form-add-img">
+                                <label for="selectcategory">Catégorie</label>
+                                <select name="selectcategory" id="category-id" required>
+                                    <option value=""></option>
+                                    <option value="1">Objets</option>
+                                    <option value="2">Appartements</option>
+                                    <option value="3">Hotels & restaurants</option>
+                                </select>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div class="submit-addimg">
+                    <p></p>
+                    <form action="" class="btn-validateoff">
+                    <input type="submit" value="Valider" onclick="">
+                    </form>
                 </div>
             </div>
         </aside>

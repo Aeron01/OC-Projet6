@@ -35,14 +35,14 @@ export const enableEdition = () => {
         modifyBtn.classList.add("hidden")
         modifyBtnPort.classList.add("hidden")
     }
-    //document.querySelectorAll("modalgllery")
+    //document.querySelectorAll("modalgallery")
     document.querySelectorAll(".js-modal").forEach(a => {
         a.addEventListener("click", (e)=> {
             
             // debut partie ajouter
             let thisId = ""
             console.log(a.id)
-            if(a.id == "modifyPortfolio") {
+            if(a.id === "modifyPortfolio") {
                 console.log("id 1er nodal ok")
                 thisId = "#modalgallery"
             
@@ -53,34 +53,50 @@ export const enableEdition = () => {
             // fill the modal
             const cards = document.querySelectorAll(".gallery figure")
 
-            cards.forEach(card => {
+                cards.forEach(card => {
 
-                // get source image and title
-                const inImg = card.querySelector("img")
-                const inTitle = card.querySelector("figcaption")
-                //console.log(inImg.src, inTitle.textContent)
-                
-                // out container for image and title
-                const outFrame = document.createElement("div")
-                outFrame.classList.add("previewpicture")
+                    // get source image and title
+                    const inImg = card.querySelector("img")
+                    const inTitle = card.querySelector("figcaption")
+                    //console.log(inImg.src, inTitle.textContent)
+                    
+                    // out container for image and title
+                    const outFrame = document.createElement("div")
+                    outFrame.classList.add("previewpicture")
 
-                // out image
-                const outImg = document.createElement("img")
-                outImg.src = inImg.src
+                    // out image
+                    const outImg = document.createElement("img")
+                    outImg.src = inImg.src
 
-                // out title
-                const outTitle = document.createElement("p")
-                outTitle.textContent = inTitle.textContent
-
-                outFrame.appendChild(outImg)
-                outFrame.appendChild(outTitle)
-                modalBody.appendChild(outFrame)
-            })
+                    // out title
+                    const outTitle = document.createElement("p")
+                    outTitle.textContent = "éditer" // ici cétait cette ligne outTitle.textContent = inTitle.textContent
+                    outTitle.setAttribute("href","#modalimg")
+                    outTitle.setAttribute("id", "modifimg")
+                    outTitle.classList.add("js-modal")
+                    
+                    // out container editor icons img
+                    const containerEdtrIcons = document.createElement("div")
+                    containerEdtrIcons.classList.add("img-editor-icons")
+                    
+                    // out trash can icon
+                    const trashCanIcon = document.createElement("span")
+                    trashCanIcon.classList.add("trash-img", "trash-icon","far", "fa-trash-can")
+                    
+                    containerEdtrIcons.appendChild(trashCanIcon)
+                    outFrame.appendChild(containerEdtrIcons)
+                    outFrame.appendChild(outImg)
+                    outFrame.appendChild(outTitle)
+                    modalBody.appendChild(outFrame)
+                })
             }
-            if(a.id == "addpicture") {
+
+            if(a.id === "addpicture") {
                 console.log("id add ok")
                 thisId = "#modalimg"
             }
+
+            console.log(thisId)
             // open the modal
                 openModal(e, `${thisId}`) // ici c'étais #modalgallery a la place du ${}
         })

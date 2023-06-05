@@ -1,6 +1,6 @@
 import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
-import { openModal } from "./modal.js"
+import { closeModal, openModal } from "./modal.js"
 import { loged } from "./script.js"
 
 export const initEdition = () => {
@@ -41,20 +41,21 @@ export const enableEdition = () => {
             
             // debut partie ajouter
             let thisId = ""
+            let prevModal = ""
             console.log(a.id)
             if(a.id === "modifyPortfolio") {
-                console.log("id 1er nodal ok")
+                //console.log("id 1er nodal ok")
                 thisId = "#modalgallery"
-            
-            //fin partie ajouter
-
-            // get modal body
-            const modalBody = document.querySelector("#modalgallery .actualimages"); // ici c'étais #modalgallery a la place du ${}
-            // fill the modal
-            const cards = document.querySelectorAll(".gallery figure")
-
+                prevModal = thisId
+                //fin partie ajouter
+                
+                // get modal body
+                const modalBody = document.querySelector("#modalgallery .actualimages"); // ici c'étais #modalgallery a la place du ${}
+                // fill the modal
+                const cards = document.querySelectorAll(".gallery figure")
+                
                 cards.forEach(card => {
-
+                    
                     // get source image and title
                     const inImg = card.querySelector("img")
                     const inTitle = card.querySelector("figcaption")
@@ -63,11 +64,11 @@ export const enableEdition = () => {
                     // out container for image and title
                     const outFrame = document.createElement("div")
                     outFrame.classList.add("previewpicture")
-
+                    
                     // out image
                     const outImg = document.createElement("img")
                     outImg.src = inImg.src
-
+                    
                     // out title
                     const outTitle = document.createElement("p")
                     outTitle.textContent = "éditer" // ici cétait cette ligne outTitle.textContent = inTitle.textContent
@@ -90,15 +91,18 @@ export const enableEdition = () => {
                     modalBody.appendChild(outFrame)
                 })
             }
-
+            
             if(a.id === "addpicture") {
-                console.log("id add ok")
+                //console.log("id add ok")
                 thisId = "#modalimg"
+                closeModal(e, "#modalgallery")
             }
-
             console.log(thisId)
             // open the modal
                 openModal(e, `${thisId}`) // ici c'étais #modalgallery a la place du ${}
+                console.log(`prec modal : ${prevModal}`)
+            //return thisId
         })
     });
+
 }

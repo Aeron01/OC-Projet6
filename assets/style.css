@@ -437,6 +437,12 @@ footer nav ul {
     font-weight: 500;
 }
 /*--- Editor & Modal icons ---*/
+
+.modal-head button {
+    border: none;
+    border-radius: 50%;
+}
+
 .fa-pen-to-square,
 .fa-xmark {    
     font-size: 18px;
@@ -444,6 +450,7 @@ footer nav ul {
 
 .fa-arrow-left {
     font-size: 24px;
+    cursor: pointer;
 }
 
 .fa-trash-can {
@@ -485,6 +492,7 @@ footer nav ul {
     left: 0;
     width: 100%;
     height: calc(100% - 59px);
+    max-height: 731px;
     background:  rgba(0, 0, 0, 0.3);
 }
 
@@ -563,6 +571,38 @@ footer nav ul {
 
 .previewpicture p {
     height: 3rem;
+}
+
+.containeraddbtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containeraddbtn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    width: 237px;
+    height: 36px;
+    background: #1D6154;
+    border: none;
+    border-radius: 60px;
+    color: white;
+}
+
+.gallerysupp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Syne', sans-serif;
 }
 
 /*--- 2nd Modal ---*/
@@ -682,5 +722,4 @@ footer nav ul {
     border: none;
     border-radius: 60px;
     color:white;
-
 }

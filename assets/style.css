@@ -305,11 +305,18 @@ footer nav ul {
     padding:0 30px;
 }
 
+/*------ Cursor pointer ------*/
 #modifyEditor,
 #modifyProfile,
 #modifyPortfolio,
+#addpicture,
 .nav-link,
-.js-modal-close {
+.js-modal-close,
+.filterContainer,
+.fa-arrow-left,
+.img-editor-icons,
+.modifimg
+.gallerysupp {
     cursor: pointer;
 }
 
@@ -372,7 +379,6 @@ footer nav ul {
     justify-content: center;
     gap: 10px;
     margin: 35px 0;
-    cursor: pointer;
 }
 
 .btn {
@@ -450,7 +456,6 @@ footer nav ul {
 
 .fa-arrow-left {
     font-size: 24px;
-    cursor: pointer;
 }
 
 .fa-trash-can {
@@ -464,7 +469,6 @@ footer nav ul {
     justify-content: right;
     width: 72px;
     padding: 6px;
-    cursor: pointer;
 }
 
 .trash-icon {
@@ -475,6 +479,15 @@ footer nav ul {
     height: 17px;
     background: #000000;
     border-radius: 2px;
+}
+
+.fa-image {
+    font-size: 58px;
+    color: #B9C5CC;
+}
+
+.previmage {
+    margin-bottom: 20px;
 }
 
 /*--- Modal ---*/
@@ -571,6 +584,10 @@ footer nav ul {
 
 .previewpicture p {
     height: 3rem;
+}
+
+.modifimg {
+    cursor: pointer;
 }
 
 .containeraddbtn{
@@ -709,7 +726,7 @@ footer nav ul {
     
 }
 
-.btn-validateoff input {
+.btn-validate input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -722,4 +739,8 @@ footer nav ul {
     border: none;
     border-radius: 60px;
     color:white;
+}
+
+.btn-validate input :required {
+    background: #1D6154;
 }

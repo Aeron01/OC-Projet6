@@ -3,6 +3,9 @@ import { modifyButton } from "../components/modifyIcon.js"
 import { closeModal, openModal } from "./modal.js"
 import { loged } from "./script.js"
 
+let thisId = ""
+let prevModal = ""
+
 export const initEdition = () => {
 
     const editorPnl = editorPanel()
@@ -40,8 +43,6 @@ export const enableEdition = () => {
         a.addEventListener("click", (e)=> {
             
             // debut partie ajouter
-            let thisId = ""
-            let prevModal = ""
             console.log(a.id)
             if(a.id === "modifyPortfolio") {
                 //console.log("id 1er nodal ok")
@@ -58,7 +59,7 @@ export const enableEdition = () => {
                     
                     // get source image and title
                     const inImg = card.querySelector("img")
-                    const inTitle = card.querySelector("figcaption")
+                    //const inTitle = card.querySelector("figcaption")
                     //console.log(inImg.src, inTitle.textContent)
                     
                     // out container for image and title
@@ -96,13 +97,24 @@ export const enableEdition = () => {
                 //console.log("id add ok")
                 thisId = "#modalimg"
                 closeModal(e, "#modalgallery")
+                /*let galleryHidden = document.getElementById("#modalgallery")
+                galleryHidden.classList.add("hidden")*/
             }
             console.log(thisId)
             // open the modal
                 openModal(e, `${thisId}`) // ici c'étais #modalgallery a la place du ${}
                 console.log(`prec modal : ${prevModal}`)
-            //return thisId
+            return prevModal
         })
     });
 
 }
+/* 
+- faire en sorte que la précédente modal disparaise à l'ouverture de la précédente et
+qu'en cliquant sur la flèche cela ferme la modal actuelle et fasse réaparaitre la modal
+précédente
+
+- récupérés les id et noms des catégories pour s'en servir dans le menu déroulant
+
+- récupére une image à partir du backend et l'afficher
+*/

@@ -1,3 +1,6 @@
+import { enableEdition } from "./edition.js";
+
+
 export const openModal = function (e, query) {
     e.preventDefault()
     const modal = document.querySelector(query);
@@ -49,7 +52,10 @@ window.addEventListener("keydown", function (e) {
     }
 });
 
-const elem = document.querySelector(".previousmodal")
+const PreviousModal = document.querySelector(".previousmodal")
+const modifyImg = document.querySelector("#modifimg")
+const trashImg = document.querySelector(".trash-img")
+const trashGallery = document.querySelector(".gallerysupp")
 /*export const prev = function (e, query) {
     //e.preventDefault()
     let test = 0
@@ -61,8 +67,29 @@ const elem = document.querySelector(".previousmodal")
     }
 }*/
 
-elem.addEventListener("click", (e) => {
-    console.log("test click")
+PreviousModal.addEventListener("click", (e) => {
+    console.log("test click fleche")
+    console.log(enableEdition(prevModal))
     //closeModal(e, query)
     //openModal(e, query)
 })
+
+trashGallery.addEventListener("click", (e) => {
+    console.log("test supp gallery")
+    //closeModal(e, query)
+    //openModal(e, query)
+})
+
+/* listener pour les icone poubelle et la modification dune image
+modifyImg.addEventListener("click", (e) => {
+    console.log("test modif img")
+    //closeModal(e, query)
+    //openModal(e, query)
+})
+
+trashImg.addEventListener("click", (e) => {
+    console.log("test supp img")
+    //closeModal(e, query)
+    //openModal(e, query)
+})
+*/

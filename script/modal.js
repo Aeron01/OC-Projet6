@@ -1,8 +1,12 @@
 import { enableEdition } from "./edition.js";
 
+const grayBack = document.body.querySelector("graybackground")
 
 export const openModal = function (e, query) {
     e.preventDefault()
+    if(grayBack != "null") {
+        document.body.classList.add("graybackground")
+    }
     const modal = document.querySelector(query);
     modal.classList.remove("hidden");
     modal.removeAttribute("aria-hidden");
@@ -26,6 +30,10 @@ export const closeModal = function (e, query) {
     const modal = (typeof query === "string") ? document.querySelector(query) : query;
     if (!modal) return;
     e.preventDefault();
+    if (grayBack != "null"){
+        document.body.classList.remove("graybackground")
+        document.body.attributes.removeNamedItem("class")
+    }
     //console.log(modal)
     modal.classList.add("hidden");
     modal.setAttribute("arial-hidden", "true");
@@ -76,11 +84,11 @@ PreviousModal.addEventListener("click", (e) => {
 
 trashGallery.addEventListener("click", (e) => {
     console.log("test supp gallery")
-    //closeModal(e, query)
-    //openModal(e, query)
+    
 })
 
-/* listener pour les icone poubelle et la modification dune image
+/* listener pour les icones poubelle et la modification dune image
+
 modifyImg.addEventListener("click", (e) => {
     console.log("test modif img")
     //closeModal(e, query)
@@ -89,7 +97,5 @@ modifyImg.addEventListener("click", (e) => {
 
 trashImg.addEventListener("click", (e) => {
     console.log("test supp img")
-    //closeModal(e, query)
-    //openModal(e, query)
 })
 */

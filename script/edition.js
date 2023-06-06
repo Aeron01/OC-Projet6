@@ -71,11 +71,11 @@ export const enableEdition = () => {
                     outImg.src = inImg.src
                     
                     // out title
-                    const outTitle = document.createElement("p")
-                    outTitle.textContent = "éditer" // ici cétait cette ligne outTitle.textContent = inTitle.textContent
-                    outTitle.setAttribute("href","#modalimg")
-                    outTitle.setAttribute("id", "modifimg")
-                    outTitle.classList.add("js-modal")
+                    const outEditor = document.createElement("p") // ici cétait cette ligne : const outTitle = document.createElement("p")
+                    outEditor.textContent = "éditer" // ici cétait cette ligne : outTitle.textContent = inTitle.textContent
+                    outEditor.setAttribute("href","#modalimg") // nexiste pas avec les lignes précédente
+                    outEditor.setAttribute("id", "modifimg") // nexiste pas avec les lignes précédente
+                    outEditor.classList.add("js-modal") // nexiste pas avec les lignes précédente
                     
                     // out container editor icons img
                     const containerEdtrIcons = document.createElement("div")
@@ -88,7 +88,7 @@ export const enableEdition = () => {
                     containerEdtrIcons.appendChild(trashCanIcon)
                     outFrame.appendChild(containerEdtrIcons)
                     outFrame.appendChild(outImg)
-                    outFrame.appendChild(outTitle)
+                    outFrame.appendChild(outEditor) // ici cétait cette ligne : outFrame.appendChild(outTitle)
                     modalBody.appendChild(outFrame)
                 })
             }
@@ -103,7 +103,7 @@ export const enableEdition = () => {
             console.log(thisId)
             // open the modal
                 openModal(e, `${thisId}`) // ici c'étais #modalgallery a la place du ${}
-                console.log(`prec modal : ${prevModal}`)
+                console.log(`précédent modale id : ${prevModal}`)
             return prevModal
         })
     });

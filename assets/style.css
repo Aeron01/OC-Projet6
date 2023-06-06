@@ -490,7 +490,15 @@ footer nav ul {
     margin-bottom: 20px;
 }
 
-/*--- Modal ---*/
+.graybackground {
+    background:  rgba(0, 0, 0, 0.3);
+}
+/*------ commun modal ------*/
+aside {
+    top: 601px;
+}
+
+/*--- 1st Modal ---*/
 
 *:focus {
     box-shadow: 0 0 10px blue;
@@ -506,7 +514,6 @@ footer nav ul {
     width: 100%;
     height: calc(100% - 59px);
     max-height: 731px;
-    background:  rgba(0, 0, 0, 0.3);
 }
 
 .modal-wrapper {
@@ -610,6 +617,8 @@ footer nav ul {
     border: none;
     border-radius: 60px;
     color: white;
+    margin-top: 38px;
+    margin-bottom: 23px;
 }
 
 .gallerysupp {

@@ -666,7 +666,7 @@ aside {
     justify-content: end;
 }
 
-.container-add-img button {
+.container-add-img input {
     width: 173px;
     height: 36px;
     background: #CBD6DC;

@@ -92,9 +92,21 @@ export function createFilters (categories){
         elem.classList.add("btn", "filter");
 
         container.appendChild(elem);
-        console.log(categorie)
     }
 
     selectCategory (container.querySelector("span"));
     
+}
+
+export function creatSelectCats (selectCats) {
+    const selectContainer=document.querySelector("#category-id")
+    
+    for (let selectCat of selectCats) {
+        if (selectCat === selectCats[1] || selectCat === selectCats[2] || selectCat === selectCats[3]) {
+            const selectElem = document.createElement("option")
+            selectElem.textContent = selectCat.name
+            selectElem.value = selectCat.id
+            selectContainer.appendChild(selectElem);
+        }
+    }
 }

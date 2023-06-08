@@ -20,7 +20,7 @@ export function selectCategory (categorieElement){
 
     let pictures = document.querySelectorAll("#portfolio figure");
     let tag = +categorieElement.id;
-            console.log(tag)
+
     for(let picture of pictures){              
         picture.classList.add("hidden");
 

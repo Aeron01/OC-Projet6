@@ -21,11 +21,13 @@ export const openModal = function (e, query) {
     btnClose.focus();
     modal.querySelector(".js-modal-stop").onclick = stopPropagation;
 }
+
 /**
 *   callback for close modal
 *   return (Event) e
 *   return(HTMLelement | string) query
 */
+
 export const closeModal = function (e, query) {
     const modal = (typeof query === "string") ? document.querySelector(query) : query;
     if (!modal) return;
@@ -87,15 +89,16 @@ trashGallery.addEventListener("click", (e) => {
     
 })
 
-/* listener pour les icones poubelle et la modification dune image
+// listener pour les icones "poubelle" et la modification dune image
+window.onload=async => {
+    modifyImg.addEventListener("click", (e) => {
+        console.log("test modif img")
+        //closeModal(e, query)
+        //openModal(e, query)
+    })
 
-modifyImg.addEventListener("click", (e) => {
-    console.log("test modif img")
-    //closeModal(e, query)
-    //openModal(e, query)
-})
-
-trashImg.addEventListener("click", (e) => {
-    console.log("test supp img")
-})
-*/
+    trashImg.addEventListener("click", (e) => {
+        console.log("test supp img")
+    })
+}
+//

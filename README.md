@@ -100,3 +100,10 @@ password: S0phie
 ````
 
 - Lancer "liveServer" sur index.html.
+
+- Récupérer le projet par defaut du serveur
+
+```terminal
+npm run backup
+
+```

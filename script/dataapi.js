@@ -1,3 +1,5 @@
+import { getAuth, setToken } from "./script.js"
+
 const HOST = "http://localhost:5678/"
 const API = HOST + "api/"
 
@@ -41,4 +43,59 @@ export async function loadCategories(){
         console.log(err)
         return []
     })
+}
+
+
+export async function deleteWork (id) {
+    
+    console.log("delete project", id)
+    const auth = getAuth()
+    
+    const option = {
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": "Bearer " + auth.token
+        },
+        method:"DELETE",
+        body: JSON.stringify({userId: auth.userId})
+    }
+
+    return await fetch(`${API}works/${id}`, option)
+    
+    .then(response=>{
+
+        if (!authentified(response)) return false
+
+        if(!response.ok) {
+            if(response.status === 500) {
+             console.log("server error")
+            }
+            return false   
+        }
+
+        if(response.status === 200) return true
+        if(response.status === 204) return true
+        return false
+    })
+
+    .catch(err=>{
+        console.log(err)
+        return false
+    })
+
+}
+/**
+ * 
+ * @param {Response} response 
+ * @returns {boolean}
+ */
+function authentified (response) {
+    if(response.status === 401) {
+        alert("user not authentified - redirect to login page")
+        setToken(undefined,undefined)
+        window.location.href="./login.html"
+        return false
+    }
+    
+    return true
 }

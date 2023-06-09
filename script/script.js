@@ -5,19 +5,30 @@ export function loged () {
     return _loged;
 }
 export function initToken () {
-    setToken(localStorage.getItem("token"));
+    setToken(localStorage.getItem("token"),
+    localStorage.getItem("userId")
+    );
 }
 
-export function setToken (token) {
-    _loged = !!token;
+const ILLEGAL_USERID = ["null", "undefined", "NaN", ""]
+
+export function setToken (token, userId) {
+    _loged = (!!token && userId && !ILLEGAL_USERID.includes(userId));
     if (!_loged) {
         localStorage.removeItem("token")
+        localStorage.removeItem("userId")
     } else {
         localStorage.setItem("token", token);
+        localStorage.setItem("userId", userId)
     }
 }
 
-
+export function getAuth() {
+    return {
+        token: localStorage.getItem("token"),
+        userId: +localStorage.getItem("userId")
+    }
+}
 
 export function createNavigation () {
     const links = [
@@ -98,11 +109,11 @@ export function createFilters (categories){
     
 }
 
-export function creatSelectCats (selectCats) {
+export function createSelectCats (selectCats) {
     const selectContainer=document.querySelector("#category-id")
     
     for (let selectCat of selectCats) {
-        if (selectCat === selectCats[1] || selectCat === selectCats[2] || selectCat === selectCats[3]) {
+        if (selectCat.id === 0) continue; {
             const selectElem = document.createElement("option")
             selectElem.textContent = selectCat.name
             selectElem.value = selectCat.id

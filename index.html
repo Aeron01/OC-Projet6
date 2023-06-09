@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/98d93a87ae.js" crossorigin="anonymous"></script>
-	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sophie Bluel - Architecte d'intérieur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/98d93a87ae.js" crossorigin="anonymous"></script>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="./assets/style.css">
+        <script src="./script/main.js" type="module"></script>
 </head>
 <body>
 <header></header>
@@ -27,63 +28,10 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
-        <div id="filters" class="filterContainer">
-        </div>
-        <aside id="modalgallery" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
-            <div class="modal-wrapper js-modal-stop">
-                <div class="modal-head">
-                    <span></span>
-                    <button class="fas fa-xmark js-modal-close"></button>
-                </div>
-                <h2 id="titlemodal">Galerie photo</h2>
-                <div class="actualimages"></div>
-                <div class="containeraddbtn">
-                    <p class="submit-addimg"></p>
-                    <button id="addpicture" class="js-modal" href="#modalimg">Ajouter une photo</button>
-                    <span class="gallerysupp">Supprimer la galerie</span>
-                </div>
-            </div>
-        </aside>
 
-        <aside id="modalimg" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
-            <div class="modal-wrapper js-modal-stop">
-                <div class="modal-head">
-                    <span class="fas fa-arrow-left previousmodal"></span>
-                    <button class="fas fa-xmark js-modal-close"></button>
-                </div>
-                <h2 id="titlemodalimg">Ajout photo</h2>
-                <div class="previewimage">
-                    <div class="container-add-img">
-                        <span class="far fa-image"></span>
-                        <img src="" alt="" id="previmage" aria-required="true">
-                        <form id="addimg" type="submit">
-                            <input type="submit" name="prev-image" value="+ Ajouter photo"></input>
-                            <p>jpg, png : 4mo max</p>
-                        </form>
-                    </div>
-                    <div class="previewimage-data">
-                        <div class="container-form">
-                            <form action="" method="post" class="form-add-img">
-                                <label for="selecttitle">Titre</label>
-                                <input id="selecttitle" type="textarea" name="title" required></input>
-                            </form>
-                            <form action="" class="form-add-img">
-                                <label for="category-id">Catégorie</label>
-                                <select name="category" id="category-id" required>
-                                    <option value="0"></option>
-                                </select>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="submit-addimg">
-                    <p></p>
-                    <form action="" class="btn-validate">
-                    <input type="submit" name="validate-add" value="Valider">
-                    </form>
-                </div>
-            </div>
-        </aside>
+        <div id="filters" class="filterContainer"></div>
+
+        
 		<div class="gallery">
 		</div>
 	</section>
@@ -104,6 +52,68 @@
 
 <footer>
 </footer>
-<script src="./script/main.js" type="module"></script>
+
+<!-- Modal Edition projet -->
+<aside id="modal-gallery" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
+    <div class="modal-wrapper js-modal-stop">
+        <div class="modal-head">
+            <span></span>
+            <button class="fas fa-xmark js-modal-close"></button>
+        </div>
+        <h2 id="titlemodal">Galerie photo</h2>
+        <div class="actualimages"></div>
+        <div class="containeraddbtn">
+            <p class="submit-addimg"></p>
+            <button id="modal-gallery-add-work" >Ajouter une photo</button>
+            <span class="gallerysupp">Supprimer la galerie</span>
+        </div>
+    </div>
+</aside>
+
+<!-- Modal ajout Projet-->
+<aside id="modal-work-new-image" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="titlemodal">
+    <div class="modal-wrapper js-modal-stop">
+        <div class="modal-head">
+            <span class="fas fa-arrow-left previous-modal"></span>
+            <button class="fas fa-xmark js-modal-close"></button>
+        </div>
+        <h2 id="titlemodalimg">Ajout photo</h2>
+
+        <form id="">
+            <div class="image-requester">
+                <div class="container-add-img">
+                    <span id="preview-no-image" class="far fa-image"></span>
+                    <img src="" alt="" id="preview-image" aria-required="true">
+                    <div class="container-add-img-btn">
+                        <button class="add-img-btn">+ Ajouter photo</button>
+                        <input id="modal-work-image" type="file" name="prev-image"></input>
+                        <p>jpg, png : 4mo max</p>
+                    </div>
+                </div>
+                <div class="previewimage-data">
+                    <div class="container-form">
+                        <div action="" method="post" class="form-add-img">
+                            <label for="selecttitle">Titre</label>
+                            <input id="selecttitle" type="textarea" name="title" required></input>
+                        </div>
+                        <div action="" class="form-add-img">
+                            <label for="category-id">Catégorie</label>
+                            <select name="category" id="category-id" required>
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submit-addimg">
+                <p></p>
+                <div class="btn-validate">
+                    <input type="submit" name="validate-add" value="Valider">
+                </div>
+            </div>
+        </form>
+    </div>
+</aside>
+
 </body>
 </html>

@@ -2,7 +2,7 @@ import { modifyButton } from "./modifyIcon.js"
 
 export const editorPanel = (parent=null) => {
     const div = document.createElement("div")
-    div.classList.add("editorMod", "Hidden")
+    div.classList.add("editorMod", "hidden")
     modifyButton("Mode édition", div)
     
     const publishing =  document.createElement("span")

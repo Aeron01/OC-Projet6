@@ -6,6 +6,7 @@ const modifyIcon = () => {
 
 export const modifyButton = (name, parent=null) => {
     const div = document.createElement("div")
+    div.classList.add("text-btn")
     const nameElement = document.createElement("span")
     nameElement.textContent = name
 

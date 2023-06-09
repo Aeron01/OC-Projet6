@@ -46,7 +46,7 @@ window.onload=async()=>{
         .then(result=>{
             
             if (!(result.token&&result.userId)) throw "Problème serveur !"           
-            setToken(result.token);
+            setToken(result.token, result.userId);
             window.location.href="./index.html";
         })
         .catch(err=>{

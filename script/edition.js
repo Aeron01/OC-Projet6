@@ -4,7 +4,6 @@ import { deleteWork } from "./dataapi.js"
 import { _closeModal, _openModal, closeModal, openModal } from "./modal.js"
 import { loged } from "./script.js"
 
-
 export const initEdition = () => {
 
     const editorPnl = editorPanel()
@@ -22,7 +21,7 @@ export const initEdition = () => {
     modifyBtnPort.addEventListener("click", (openModalEdition))
 
     // button "delete gallery"
-    const trashGallery = document.querySelector(".gallerysupp")
+    const trashGallery = document.querySelector(".gallery-suppress-btn")
     trashGallery.addEventListener("click", deleteGallery)
 
     // button add new project
@@ -90,7 +89,7 @@ const deleteGallery = () => {
 const openModalEdition = () => {
     // get modal body
 
-    const modalBody = document.querySelector("#modal-gallery .actualimages"); // ici c'étais #modalgallery a la place du ${}
+    const modalBody = document.querySelector("#modal-gallery .actual-images"); // ici c'étais #modalgallery a la place du ${}
     modalBody.innerHTML=""
 
     

@@ -314,7 +314,7 @@ button,
 .fa-arrow-left,
 .img-editor-icons,
 .modifimg,
-.gallerysupp {
+.gallery-suppress-btn {
     cursor: pointer;
 }
 
@@ -346,7 +346,7 @@ button,
     margin-bottom: 30px;
 }
 
-.submitbtn {
+.submit-btn {
     display: flex;
     justify-content: center;
     width: 179px;
@@ -362,7 +362,7 @@ button,
     display: none !important;
 }
 
-.loginError{
+.login-error{
     color: red;
     font-weight: bold;
     font-size: 18px;
@@ -371,7 +371,7 @@ button,
 
 /*------ Filter ------*/
 
-.filterContainer {
+.filter-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -405,7 +405,7 @@ button,
 
 /*------ Editor Mod ------*/
 
-.editorMod {
+.editor-Mod {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,8 +484,8 @@ button,
     color: #B9C5CC;
 }
 
-.preview-image {
-    margin-bottom: 20px;
+#preview-image {
+    height: 100%;
 }
 
 /*------ commun modal ------*/
@@ -537,8 +537,8 @@ aside {
     align-items: center;
 }
 
-#titlemodal,
-#titlemodalimg {
+#title-modal,
+#title-modal-img {
     width: 100%;
     font-family: 'WorkSans', sans-serif;
     font-weight: 400;
@@ -553,7 +553,7 @@ aside {
     justify-content: space-between;
 }
 
-.actualimages,
+.actual-images,
 .image-requester {
     overflow: auto;
     display: flex;
@@ -562,11 +562,9 @@ aside {
     margin: 0px 80px;
     width: calc(100% - 160px);
     height: 470px;
-    /*border: 2px solid red;*/
-    gap: 8px;
 }
 
-.actualimages {
+.actual-images {
     margin-top: 10px;
 }
 
@@ -594,14 +592,14 @@ aside {
     cursor: pointer;
 }
 
-.containeraddbtn{
+.container-add-btn{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.containeraddbtn button {
+.container-add-btn button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -618,7 +616,7 @@ aside {
     margin-bottom: 23px;
 }
 
-.gallerysupp {
+.gallery-suppress-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -638,7 +636,7 @@ aside {
 }
 
 .container-add-img,
-.previewimage-data {
+.container-image-requester-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -646,9 +644,9 @@ aside {
 
 .container-add-img button,
 .container-add-img p,
-.container-form label,
-.container-form .container-add-img input,
-.container-form .container-add-img select {
+.new-image-form label,
+.new-image-form .container-add-img input,
+.new-image-form .container-add-img select {
     font-family: 'Work Sans',sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -661,11 +659,13 @@ aside {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 169px;
+    min-height: 169px;
     background: #E8F1F6;
     border-radius: 3px;
     justify-content: end;
 }
+
+
 
 .container-add-img-btn {
     display: inline-block;
@@ -699,20 +699,20 @@ aside {
     margin-bottom: 19px;
 }
 
-.previewimage-data {
+.container-image-requester-form {
     width: 100%;
     height: 175px;
     justify-content: center;
 }
 
-.previewimage-data form {
+/*.container-image-requester-form form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-}
+}*/
 
 
-.container-form {
+.new-image-form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -721,7 +721,7 @@ aside {
     font-size: 14px;
 }
 
-.container-form label {
+.new-image-form label {
     color: #3D3D3D;
     bottom: 10px;
 }
@@ -736,11 +736,11 @@ aside {
     font-weight: 400;
 }
 
-.submit-addimg {
+.container-btn-validate {
     margin: 0 81px;
 }
 
-.submit-addimg p {
+.container-btn-validate p {
     border-bottom: 1px solid #b3b3b3;
     height: 0;
     

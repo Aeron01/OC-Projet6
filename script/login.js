@@ -14,7 +14,7 @@ window.onload=async()=>{
         event.preventDefault()
         const email=document.getElementById("login-email")
         const password=document.getElementById("password")
-        const logError= document.querySelector(".loginError")
+        const logError= document.querySelector(".login-error")
         logError.textContent="";
 
 

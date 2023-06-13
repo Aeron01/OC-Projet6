@@ -84,6 +84,7 @@ export async function deleteWork (id) {
     })
 
 }
+
 /**
  * 
  * @param {Response} response 
@@ -98,4 +99,49 @@ function authentified (response) {
     }
     
     return true
+}
+
+
+// send the project (not good for now)
+export async function sendWork (id) {
+    
+    console.log("send work", id)
+    const auth = getAuth()
+    
+    const option = {
+        headers: {
+            "Content-Type": "application/json",
+            "authorization": "Bearer " + auth.token
+        },
+        method:"POST",
+        body: JSON.stringify({userId: auth.userId})
+    }
+
+    return await fetch(`${API}works/${id}`, option)
+    
+    .then(response=>{
+
+        if (!authentified(response)) return false
+
+        if(!response.ok) {
+            if(response.status === 500) {
+             console.log("server error")
+            } else {
+                response.status === 400
+                console.log("Bad Request")
+            }
+            return false
+
+        }
+
+        if(response.status === 201) return true
+        //if(response.status === 204) return true
+        return false
+    })
+
+    .catch(err=>{
+        console.log(err)
+        return false
+    })
+
 }

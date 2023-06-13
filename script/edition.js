@@ -47,6 +47,7 @@ modalNewImage.onchange = (e) => {
     const data = e.target.files[0]
     if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg") {
         console.log("change", e.target.files[0])
+        console.log(data.id)
         previewImg.src = URL.createObjectURL(data)
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")

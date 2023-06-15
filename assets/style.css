@@ -90,6 +90,7 @@ video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -484,9 +485,20 @@ button,
     color: #B9C5CC;
 }
 
+.container-img-preview {
+    display: flex;
+    align-items: center;
+    width: auto;
+    max-width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
 
 #preview-image {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 /*------ commun modal ------*/
@@ -661,6 +673,7 @@ aside {
     background: #E8F1F6;
     border-radius: 3px;
     justify-content: center;
+    padding: 7px 0;
 }
 
 
@@ -687,7 +700,6 @@ aside {
     border-radius: 50px;
     border: none;
     color: #306685;
-    margin: 7px 0;
 }
 
 .container-add-img p{

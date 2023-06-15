@@ -82,8 +82,10 @@
         <form id="form-work-new-image"> <!-- ajout d'une id qui est pas utiliser pour le moment (c'était une id vide avant) -->
             <div class="image-requester">
                 <div class="container-add-img">
-                    <span id="preview-no-image" class="far fa-image"></span>
-                    <img src="" alt="" id="preview-image" aria-required="true">
+                    <div class="container-img-preview">
+                        <span id="preview-no-image" class="far fa-image"></span>
+                        <img src="" alt="" class="hidden" id="preview-image" aria-required="true">
+                    </div>
                     <div class="container-add-img-btn">
                         <button class="add-img-btn">+ Ajouter photo</button>
                         <input id="modal-work-image" type="file" name="imageUrl"></input>

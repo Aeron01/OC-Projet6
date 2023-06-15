@@ -103,41 +103,40 @@ function authentified (response) {
 
 
 // send the project (not good for now)
-export async function sendWork () {
+export async function sendWork (formData) {
     
-    console.log("send work", id)
-    fetch('http://localhost:5678/api/works', {
+    const auth=getAuth()
+    return fetch('http://localhost:5678/api/works/', {
         method: "POST",
-        body: formData,
         headers: {
-            Autorization: "Bearer " + token
-        }
+            "authorization": "Bearer " + auth.token
+            
+        },
+        body: formData
     })
     
-    .then(response=>{
+    .then(async (response)=>{
 
-        if (!authentified(response)) return false
+        if (!authentified(response)) return null
 
-        if(!response.ok) {
-            if(response.status === 500) {
-             console.log("server error")
-            } else {
-                response.status === 400
-                console.log("Bad Request")
-            }
-            return false
-
+        if(response.status === 500) {
+            throw new Error ("Server error")
+        } else if (response.status === 400) {
+            throw new Error ("Bad Request")
         }
-
-        if(response.status === 201) return true
-        if(response.status === 204) return true
-        return false
+        if(!response.ok) {
+            throw new Error ("Unknow error")
+        }
+        if(response.status === 201) {
+            return await response.json()
+        }
+        return null
 
     })
 
     .catch(err=>{
         console.log(err)
-        return false
+        return null
     })
 
 }

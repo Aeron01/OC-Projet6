@@ -2,7 +2,7 @@ import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
 import { deleteWork, sendWork } from "./dataapi.js"
 import { _closeModal, _openModal, closeModal, openModal } from "./modal.js"
-import { loged } from "./script.js"
+import { createCard, loged } from "./script.js"
 
 export const initEdition = () => {
 
@@ -126,64 +126,86 @@ const openModalEdition = () => {
 // preview for add new image
 const previewNoImg = document.getElementById("preview-no-image");
 const previewImg = document.getElementById("preview-image");
-const modalNewImage = document.getElementById("modal-work-new-image")
-let newPreviewImgUrl = ""
+const modalInputImage = document.getElementById("modal-work-image")
+let imageData = null
 
-modalNewImage.onchange = (e) => {
+modalInputImage.onchange = (e) => {
     const data = e.target.files[0]
-    if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg") {
-        //console.log("change", e.target.files[0])
+    if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg" || data.type === "image/webp") {
+
+        if(data.size > 400000000){
+            return alert("Image trop lourd !")
+        }
+
+        imageData = data
+        
         previewImg.src = URL.createObjectURL(data)
-        newPreviewImgUrl = previewImg.src
-        //console.log("verif url new image : " + previewImg.src)
+        
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")
-        return newPreviewImgUrl
+        document.querySelector(".container-add-img-btn").classList.add("hidden")
+        
     } else {
+        imageData = null
         console.log("not an image")
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")
+        document.querySelector(".container-add-img-btn").classList.remove("hidden")
     }
     
-    console.log(e.target)
 }
 
 // récupération du titre et de la catégorie (quand cela fonctionnera, je devrais en faire une seule fonction qui fera les deux)
-let Title = ""
-let selectCategoryId = ""
 
 function getTitle(){
-    const Title = document.getElementById("select-title").value;
-    return Title
+    return document.getElementById("select-title").value;
+    
 }
 
 function getCat() {
-    const selectCategoryId = document.getElementById("category-id").value
-    return selectCategoryId
+    return document.getElementById("category-id").value
+    
 }
 
 
 // envoie de la nouvelle image dans la galerie
 
-const submitNewImgBtn = document.querySelector(".btn-validate")
+const submitNewImgBtn = document.getElementById("form-work-new-image")
 
-submitNewImgBtn.addEventListener("click", () => {
+submitNewImgBtn.addEventListener("submit", async (e) => {
+    const titre = getTitle();
+    const category = getCat();
+    e.stopPropagation()
+    e.preventDefault()
+
+    if(titre.length<3) {
+        console.log("Titre trop court")
+        return null
+    } else if(category === undefined || category === null) {
+        console.log("category undefined")
+        return null
+    } else if (!imageData) {
+        console.log("no image")
+        return null
+    }
+    
     const formData = new FormData();
-    const titre = getTitle(Title);
-    const category = getCat(selectCategoryId);
 
-    formData.append("image", newPreviewImgUrl);
+    formData.append("image", imageData);
     formData.append("title", titre);
-    formData.append("categoryId", category);
+    formData.append("category", category);
 
-    //console.log("url image : " + newPreviewImgUrl);
-    //console.log("Titre :  " + titre);
-    //console.log("category :  " + category);
 
-    //for (const value of formData.entries())
-    //console.log(value[0], value,[1])
-
-    sendWork(formData)
+    const result = await sendWork(formData)
+    console.log(result)
+    if(!result) {
+        console.log("Something wrong")
+        return null
+    }
+    console.log(result)
+    createCard(result, document.querySelector(".gallery"))
+    closeModal("#modal-work-new-image")
+    closeModal("#modal-gallery")
 })
 
 

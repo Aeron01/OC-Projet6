@@ -168,22 +168,22 @@ function getCat() {
 const submitNewImgBtn = document.querySelector(".btn-validate")
 
 submitNewImgBtn.addEventListener("click", () => {
-    const formData = new FormData()
-    const titre = getTitle(Title)
-    const category = getCat(selectCategoryId)
+    const formData = new FormData();
+    const titre = getTitle(Title);
+    const category = getCat(selectCategoryId);
 
-    formData.append("image", newPreviewImgUrl)
-    formData.append("title", titre)
-    formData.append("category", category)
+    formData.append("image", newPreviewImgUrl);
+    formData.append("title", titre);
+    formData.append("categoryId", category);
 
-    console.log("url image : " + newPreviewImgUrl)
-    console.log("Titre :  " + titre)
-    console.log("category :  " + category)
+    //console.log("url image : " + newPreviewImgUrl);
+    //console.log("Titre :  " + titre);
+    //console.log("category :  " + category);
 
-    for (const value of formData.entries())
-    console.log(value[0], value,[1])
+    //for (const value of formData.entries())
+    //console.log(value[0], value,[1])
 
-    //sendWork(formData)
+    sendWork(formData)
 })
 
 

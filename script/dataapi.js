@@ -103,21 +103,16 @@ function authentified (response) {
 
 
 // send the project (not good for now)
-export async function sendWork (id) {
+export async function sendWork () {
     
     console.log("send work", id)
-    const auth = getAuth()
-    
-    const option = {
+    fetch('http://localhost:5678/api/works', {
+        method: "POST",
+        body: formData,
         headers: {
-            "Content-Type": "application/json",
-            "authorization": "Bearer " + auth.token
-        },
-        method:"POST",
-        body: JSON.stringify({userId: auth.userId})
-    }
-
-    return await fetch(`${API}works/${id}`, option)
+            Autorization: "Bearer " + token
+        }
+    })
     
     .then(response=>{
 

@@ -79,7 +79,7 @@
         </div>
         <h2 id="title-modal-img">Ajout photo</h2>
 
-        <form id="form-work-new-image"> <!-- ajout d'une id (c'était une id vide avant) -->
+        <form id="form-work-new-image"> <!-- ajout d'une id qui est pas utiliser pour le moment (c'était une id vide avant) -->
             <div class="image-requester">
                 <div class="container-add-img">
                     <span id="preview-no-image" class="far fa-image"></span>
@@ -92,11 +92,11 @@
                 </div>
                 <div class="container-image-requester-form">
                     <div class="new-image-form">
-                        <div action="" method="post" class="form-add-img">
+                        <div class="form-add-img">
                             <label for="select-title">Titre</label>
-                            <input id="select-title" type="textarea" name="title" required></input>
+                            <input id="select-title" type="text" name="title" required></input>
                         </div>
-                        <div action="" class="form-add-img">
+                        <div class="form-add-img">
                             <label for="category-id">Catégorie</label>
                             <select name="category" id="category-id" required>
                             </select>
@@ -107,7 +107,7 @@
             <div class="container-btn-validate">
                 <p></p>
                 <div class="btn-validate">
-                    <input type="submit" name="validate-add" value="Valider">
+                    <input type="" name="validate-add" value="Valider">
                 </div>
             </div>
         </form>

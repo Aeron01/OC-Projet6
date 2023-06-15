@@ -1,6 +1,6 @@
 import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
-import { deleteWork } from "./dataapi.js"
+import { deleteWork, sendWork } from "./dataapi.js"
 import { _closeModal, _openModal, closeModal, openModal } from "./modal.js"
 import { loged } from "./script.js"
 
@@ -40,24 +40,6 @@ export const initEdition = () => {
     })
 }
 
-const previewNoImg = document.getElementById("preview-no-image");
-const previewImg = document.getElementById("preview-image");
-const modalNewImage = document.getElementById("modal-work-new-image")
-modalNewImage.onchange = (e) => {
-    const data = e.target.files[0]
-    if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg") {
-        console.log("change", e.target.files[0])
-        console.log(data.id)
-        previewImg.src = URL.createObjectURL(data)
-        previewImg.classList.remove("hidden")
-        previewNoImg.classList.add("hidden")
-    } else {
-        console.log("not an image")
-        previewImg.classList.remove("hidden")
-        previewNoImg.classList.add("hidden")
-    }
-}
-
 export const enableEdition = () => {
     const editorPnl = document.getElementById("modifyEditor")
     const modifyBtn = document.getElementById("modifyProfile")
@@ -75,18 +57,10 @@ export const enableEdition = () => {
         editorPnl.classList.add("hidden")
         modifyBtn.classList.add("hidden")
         modifyBtnPort.classList.add("hidden")
-    }
-
-  
+    }  
 }
 
-const deleteGallery = () => {
-    console.log("delete gallery")
-    const gallery = document.querySelector(".gallery")
-    gallery.innerHTML=""
-    openModalEdition()
-}
-
+// open modal
 const openModalEdition = () => {
     // get modal body
 
@@ -148,12 +122,88 @@ const openModalEdition = () => {
     _openModal("#modal-gallery") // ici c'étais #modalgallery a la place du ${}
 
 }
+
+// preview for add new image
+const previewNoImg = document.getElementById("preview-no-image");
+const previewImg = document.getElementById("preview-image");
+const modalNewImage = document.getElementById("modal-work-new-image")
+let newPreviewImgUrl = ""
+
+modalNewImage.onchange = (e) => {
+    const data = e.target.files[0]
+    if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg") {
+        //console.log("change", e.target.files[0])
+        previewImg.src = URL.createObjectURL(data)
+        newPreviewImgUrl = previewImg.src
+        //console.log("verif url new image : " + previewImg.src)
+        previewImg.classList.remove("hidden")
+        previewNoImg.classList.add("hidden")
+        return newPreviewImgUrl
+    } else {
+        console.log("not an image")
+        previewImg.classList.remove("hidden")
+        previewNoImg.classList.add("hidden")
+    }
+    
+    console.log(e.target)
+}
+
+// récupération du titre et de la catégorie (quand cela fonctionnera, je devrais en faire une seule fonction qui fera les deux)
+let Title = ""
+let selectCategoryId = ""
+
+function getTitle(){
+    const Title = document.getElementById("select-title").value;
+    return Title
+}
+
+function getCat() {
+    const selectCategoryId = document.getElementById("category-id").value
+    return selectCategoryId
+}
+
+
+// envoie de la nouvelle image dans la galerie
+
+const submitNewImgBtn = document.querySelector(".btn-validate")
+
+submitNewImgBtn.addEventListener("click", () => {
+    const formData = new FormData()
+    const titre = getTitle(Title)
+    const category = getCat(selectCategoryId)
+
+    formData.append("image", newPreviewImgUrl)
+    formData.append("title", titre)
+    formData.append("category", category)
+
+    console.log("url image : " + newPreviewImgUrl)
+    console.log("Titre :  " + titre)
+    console.log("category :  " + category)
+
+    for (const value of formData.entries())
+    console.log(value[0], value,[1])
+
+    //sendWork(formData)
+})
+
+
+// delete project
+const deleteGallery = () => {
+    console.log("delete gallery")
+    const gallery = document.querySelector(".gallery")
+    gallery.innerHTML=""
+    openModalEdition()
+}
+
+
+
+
+//let newImgUrl = document.getElementById("preview-image").getAttribute("src")
+
 /* 
-- faire en sorte que la précédente modal disparaise à l'ouverture de la précédente et
-qu'en cliquant sur la flèche cela ferme la modal actuelle et fasse réaparaitre la modal
-précédente
+- faire en sorte que quand on quite l'ajout d'image, les choix et l'ajout d'image soit remise à zero.
 
-- récupérés les id et noms des catégories pour s'en servir dans le menu déroulant
+- quand on clique su valider, cela doit ajouter à la galerie la nouvelle immage, avec son nom et sa categorie et l'afficher.
 
-- récupére une image à partir du backend et l'afficher
+- quand on clique sur "publier", la nouvelle galerie est sauvegarder dans le backend.
 */

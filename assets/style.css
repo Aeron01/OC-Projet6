@@ -755,9 +755,7 @@ aside {
 
 .container-btn-validate p {
     border-bottom: 1px solid #b3b3b3;
-    height: 0;
-    
-    
+    height: 0;  
 }
 
 
@@ -776,6 +774,6 @@ aside {
     color:white;
 }
 
-.btn-validate input :required {
+.btn-validate input:required {
     background: #1D6154;
 }

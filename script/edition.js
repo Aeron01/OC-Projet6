@@ -34,6 +34,8 @@ export const initEdition = () => {
     const modalNew = document.querySelector("#modal-work-new-image")
     const previousBtn = modalNew.querySelector(".previous-modal")
     previousBtn.addEventListener("click", (e) => {
+
+        //closeAddModal()
         _closeModal("#modal-work-new-image")
     })
 }
@@ -124,14 +126,25 @@ const previewImg = document.getElementById("preview-image");
 const modalInputImage = document.getElementById("modal-work-image")
 let imageData = null
 
+
+/*const closeAddModal =() => {
+    if(previewImg.classList === "hidden") {
+        -closeModal("#modal-work-new-image")    
+    }
+    previewImg.classList.add("hidden")
+    previewNoImg.classList.remove("hidden")
+    document.querySelector(".container-add-img-btn").classList.remove("hidden")
+    -closeModal("#modal-work-new-image")
+}*/
+
 modalInputImage.onchange = (e) => {
     const data = e.target.files[0]
     if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg" || data.type === "image/webp") {
-
+        
         if(data.size > 400000000){
             return alert("Image trop lourde !")
         }
-
+        
         imageData = data
         
         previewImg.src = URL.createObjectURL(data)
@@ -143,13 +156,12 @@ modalInputImage.onchange = (e) => {
         
     } else {
         imageData = null
-        console.log("not an image")
+        alert("not an image")
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")
         document.querySelector(".container-add-img-btn").classList.remove("hidden")
         document.querySelector(".container-add-img").style.padding = "10px 0";
     }
-    
 }
 
 // récupération du titre et de la catégorie
@@ -203,6 +215,7 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
     }
     console.log(result)
     createCard(result, document.querySelector(".gallery"))
+    //closeAddModal()
     closeModal("#modal-work-new-image")
     closeModal("#modal-gallery")
 })

@@ -241,6 +241,7 @@ li:hover {
 
 .gallery img {
     width: 100%;
+    max-height: 410px;
 }
 
 #contact {
@@ -492,7 +493,6 @@ button,
     max-width: 50%;
     height: 100%;
     overflow: hidden;
-    border-radius: 8px;
 }
 
 #preview-image {
@@ -572,16 +572,17 @@ aside {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 0px 80px;
-    width: calc(100% - 160px);
+    margin: 0px 50px;
+    width: calc(100% - 100px);
     height: 470px;
+    gap: 8px;
 }
 
 .actual-images {
     margin-top: 10px;
 }
 
-.previewpicture {
+.preview-picture {
     max-width: 84px;
     height: auto;
     max-height: 175px;
@@ -590,15 +591,21 @@ aside {
     position: relative;
 }
 
-.previewpicture img {
+.preview-picture img {
     width: 100%;
+    max-height: 112.45px;
     height: auto;
     margin: 0;
     object-fit: contain;
 }
 
-.previewpicture p {
+.preview-picture p {
     height: 3rem;
+}
+
+.preview-picture button {
+    border: none;
+    background-color: white;
 }
 
 .modifimg {
@@ -665,18 +672,14 @@ aside {
     font-weight: 500;
 }
 
-
-
 .container-add-img {
     width: 100%;
     height: 169px;
     background: #E8F1F6;
     border-radius: 3px;
     justify-content: center;
-    padding: 7px 0;
+    padding: 10px 0;
 }
-
-
 
 .container-add-img-btn {
     display: inline-block;

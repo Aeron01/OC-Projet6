@@ -28,7 +28,6 @@ export const initEdition = () => {
     const addBtnNewProject = document.querySelector("#modal-gallery-add-work")
     addBtnNewProject.addEventListener("click", (e) => {
         console.log("add new project")
-        //closeModal("#modal-gallery")
         _openModal("#modal-work-new-image")
     })
 
@@ -36,7 +35,6 @@ export const initEdition = () => {
     const previousBtn = modalNew.querySelector(".previous-modal")
     previousBtn.addEventListener("click", (e) => {
         _closeModal("#modal-work-new-image")
-        //openModal("#modal-gallery")
     })
 }
 
@@ -64,10 +62,8 @@ export const enableEdition = () => {
 const openModalEdition = () => {
     // get modal body
 
-    const modalBody = document.querySelector("#modal-gallery .actual-images"); // ici c'étais #modalgallery a la place du ${}
+    const modalBody = document.querySelector("#modal-gallery .actual-images");
     modalBody.innerHTML=""
-
-    
 
     // fill the modal
     const cards = document.querySelectorAll(".gallery figure")
@@ -81,15 +77,15 @@ const openModalEdition = () => {
         
         // out container for image and title
         const outFrame = document.createElement("div")
-        outFrame.classList.add("previewpicture")
+        outFrame.classList.add("preview-picture")
         
         // out image
         const outImg = document.createElement("img")
         outImg.src = inImg.src
         
         // edit button
-        const outEditBtn = document.createElement("button") // ici cétait cette ligne : const outTitle = document.createElement("p")
-        outEditBtn.textContent = "éditer" // ici cétait cette ligne : outTitle.textContent = inTitle.textContent
+        const outEditBtn = document.createElement("button")
+        outEditBtn.textContent = "éditer"
         outEditBtn.addEventListener("click",(e) => {
             console.log("edit project", inTitle.textContent)
         })
@@ -115,12 +111,11 @@ const openModalEdition = () => {
         containerEdtrIcons.appendChild(trashCanIcon)
         outFrame.appendChild(containerEdtrIcons)
         outFrame.appendChild(outImg)
-        outFrame.appendChild(outEditBtn) // ici cétait cette ligne : outFrame.appendChild(outTitle)
+        outFrame.appendChild(outEditBtn)
         modalBody.appendChild(outFrame)
     })
     
-    _openModal("#modal-gallery") // ici c'étais #modalgallery a la place du ${}
-
+    _openModal("#modal-gallery")
 }
 
 // preview for add new image
@@ -134,7 +129,7 @@ modalInputImage.onchange = (e) => {
     if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg" || data.type === "image/webp") {
 
         if(data.size > 400000000){
-            return alert("Image trop lourd !")
+            return alert("Image trop lourde !")
         }
 
         imageData = data
@@ -144,6 +139,7 @@ modalInputImage.onchange = (e) => {
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")
         document.querySelector(".container-add-img-btn").classList.add("hidden")
+        document.querySelector(".container-add-img").style.padding = "0 0";
         
     } else {
         imageData = null
@@ -151,11 +147,12 @@ modalInputImage.onchange = (e) => {
         previewImg.classList.remove("hidden")
         previewNoImg.classList.add("hidden")
         document.querySelector(".container-add-img-btn").classList.remove("hidden")
+        document.querySelector(".container-add-img").style.padding = "10px 0";
     }
     
 }
 
-// récupération du titre et de la catégorie (quand cela fonctionnera, je devrais en faire une seule fonction qui fera les deux)
+// récupération du titre et de la catégorie
 
 function getTitle(){
     return document.getElementById("select-title").value;
@@ -179,16 +176,18 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
     e.preventDefault()
 
     if(titre.length<3) {
-        console.log("Titre trop court")
+        alert("Titre trop court")
         return null
     } else if(category === undefined || category === null) {
-        console.log("category undefined")
+        alert("Categorie non définie")
         return null
     } else if (!imageData) {
-        console.log("no image")
+        alert("Pas d'image selectionner")
         return null
     }
+    //document.querySelector(".btn-validate input").style.background = "#1D6154";
     
+
     const formData = new FormData();
 
     formData.append("image", imageData);

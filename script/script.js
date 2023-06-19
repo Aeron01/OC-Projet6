@@ -86,7 +86,7 @@ export function createCard (card, parent){
 
 export function createCards (data){
     const container=document.querySelector(".gallery")
-    console.log(data)
+    //console.log(data)
     return data.map((card)=> createCard(card, container));
 }
 

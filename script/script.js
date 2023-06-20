@@ -113,11 +113,25 @@ export function createSelectCats (selectCats) {
     const selectContainer=document.querySelector("#category-id")
     
     for (let selectCat of selectCats) {
-        if (selectCat.id === 0) continue; {
+        if(selectCat.id === 0) {
+            const selectElem = document.createElement("option")
+            selectElem.textContent = ""
+            selectElem.value = selectCat.id
+            selectContainer.appendChild(selectElem);
+        } else {
             const selectElem = document.createElement("option")
             selectElem.textContent = selectCat.name
             selectElem.value = selectCat.id
             selectContainer.appendChild(selectElem);
         }
     }
+
+    /*for (let selectCat of selectCats) {
+        if (selectCat.id === 0) continue; {
+            const selectElem = document.createElement("option")
+            selectElem.textContent = selectCat.name
+            selectElem.value = selectCat.id
+            selectContainer.appendChild(selectElem);
+        }
+    }*/
 }

@@ -164,6 +164,8 @@ modalInputImage.onchange = (e) => {
     }
 }
 
+
+
 // récupération du titre et de la catégorie
 
 function getTitle(){
@@ -176,6 +178,25 @@ function getCat() {
     
 }
 
+// feilds check test
+const feildsCheckTest = document.querySelector(".image-requester")
+let titleFeildTest = document.getElementById("select-title")
+let CategoryFeildTest = document.getElementById("category-id")
+
+//let titleFeildTest = getTitle()
+//let CategoryFeildTest = getCat()
+
+feildsCheckTest.onchange = () => {
+    if(imageData === null || titleFeildTest.value.length<3 || CategoryFeildTest.value === "0") {
+        //console.log("one or all fields missing")
+        document.querySelector(".btn-validate input").style.background = "#A7A7A7";
+    } else {
+        //console.log("all fields ok")
+        document.querySelector(".btn-validate input").style.background = "#1D6154";
+    }
+    console.log(titleFeildTest.value)
+    console.log(CategoryFeildTest.value)
+}
 
 // envoie de la nouvelle image dans la galerie
 
@@ -190,22 +211,23 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
     if(titre.length<3) {
         alert("Titre trop court")
         return null
-    } else if(category === undefined || category === null) {
+    } else if(category === undefined || category === null || category === "0") {
         alert("Categorie non définie")
         return null
     } else if (!imageData) {
         alert("Pas d'image selectionner")
         return null
     }
-    //document.querySelector(".btn-validate input").style.background = "#1D6154";
     
-
+    
+    
     const formData = new FormData();
-
+    
     formData.append("image", imageData);
     formData.append("title", titre);
     formData.append("category", category);
-
+    console.log(category)
+    
 
     const result = await sendWork(formData)
     console.log(result)
@@ -216,8 +238,8 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
     console.log(result)
     createCard(result, document.querySelector(".gallery"))
     //closeAddModal()
-    closeModal("#modal-work-new-image")
-    closeModal("#modal-gallery")
+    _closeModal("#modal-work-new-image")
+    _closeModal("#modal-gallery")
 })
 
 

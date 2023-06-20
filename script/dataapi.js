@@ -45,7 +45,7 @@ export async function loadCategories(){
     })
 }
 
-
+// delete work project
 export async function deleteWork (id) {
     
     console.log("delete project", id)
@@ -85,6 +85,7 @@ export async function deleteWork (id) {
 
 }
 
+// verified authentification
 /**
  * 
  * @param {Response} response 
@@ -102,7 +103,7 @@ function authentified (response) {
 }
 
 
-// send the project (not good for now)
+// send the project
 export async function sendWork (formData) {
     
     const auth=getAuth()

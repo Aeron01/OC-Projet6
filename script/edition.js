@@ -168,7 +168,7 @@ modalInputImage.onchange = (e) => {
 
 // récupération du titre et de la catégorie
 
-function getTitle(){
+/*function getTitle(){
     return document.getElementById("select-title").value;
     
 }
@@ -176,12 +176,21 @@ function getTitle(){
 function getCat() {
     return document.getElementById("category-id").value
     
+}*/
+
+let feildsInfo = []
+
+function getfeildsInfo() {
+    feildsInfo.push(document.getElementById("select-title").value);
+    feildsInfo.push(document.getElementById("category-id").value);
+    //console.log("checking content of variable feildsInfo : " + feildsInfo)
+    return feildsInfo
 }
 
 // feilds check test
-const feildsCheckTest = document.querySelector(".image-requester")
-let titleFeildTest = document.getElementById("select-title")
-let CategoryFeildTest = document.getElementById("category-id")
+const feildsCheckTest = document.querySelector(".image-requester");
+let titleFeildTest = document.getElementById("select-title");
+let CategoryFeildTest = document.getElementById("category-id");
 
 //let titleFeildTest = getTitle()
 //let CategoryFeildTest = getCat()
@@ -194,8 +203,8 @@ feildsCheckTest.onchange = () => {
         //console.log("all fields ok")
         document.querySelector(".btn-validate input").style.background = "#1D6154";
     }
-    console.log(titleFeildTest.value)
-    console.log(CategoryFeildTest.value)
+    //console.log("checking feilds title : " + titleFeildTest.value)
+    //console.log("checking feilds category : " + CategoryFeildTest.value)
 }
 
 // envoie de la nouvelle image dans la galerie
@@ -203,8 +212,8 @@ feildsCheckTest.onchange = () => {
 const submitNewImgBtn = document.getElementById("form-work-new-image")
 
 submitNewImgBtn.addEventListener("submit", async (e) => {
-    const titre = getTitle();
-    const category = getCat();
+    const titre = getfeildsInfo()[0]; //getTitle();
+    const category = getfeildsInfo()[1]; //getCat();
     e.stopPropagation()
     e.preventDefault()
 

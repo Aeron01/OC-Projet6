@@ -8,21 +8,21 @@ let modal_Path = []
 
 export const openModal = function (query) {
     if (modal_Path.length>0) {
-        _closeModal(modal_Path[modal_Path.length-1])
+        stopModal(modal_Path[modal_Path.length-1])
     }
     modal_Path.push(query)
     console.log(modal_Path)
 
-    _openModal(query)
+    startModal(query)
 }
 
 export const closeModal = function (query) {
     if (modal_Path.length>1 && modal_Path[modal_Path.length-1] === query) {
-        _openModal(modal_Path[modal_Path.length-2])
+        startModal(modal_Path[modal_Path.length-2])
     }
     modal_Path.splice(indexOffEnd(modal_Path, query), 1)
 
-    _closeModal(query)
+    stopModal(query)
 }
 
 const indexOffEnd = (arr, query) => {
@@ -40,7 +40,7 @@ const indexOffEnd = (arr, query) => {
  *   return(HTMLelement | string) query
 */
 
-export const _closeModal = function (query) {
+export const stopModal = function (query) {
     const modal = (typeof query === "string") ? document.querySelector(query) : query;
     if (!modal) return;
     
@@ -53,7 +53,7 @@ export const _closeModal = function (query) {
     modal.querySelector(".js-modal-stop").onclick= null;
 }
 
-export const _openModal = function (query) {
+export const startModal = function (query) {
 
     const modal = document.querySelector(query);
     modal.classList.remove("hidden");

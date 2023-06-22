@@ -1,7 +1,7 @@
 import { editorPanel } from "../components/editorPanel.js"
 import { modifyButton } from "../components/modifyIcon.js"
 import { deleteWork, sendWork } from "./dataapi.js"
-import { _closeModal, _openModal, closeModal, openModal } from "./modal.js"
+import { stopModal, startModal } from "./modal.js"
 import { createCard, loged } from "./script.js"
 
 export const initEdition = () => {
@@ -27,16 +27,14 @@ export const initEdition = () => {
     // button add new project
     const addBtnNewProject = document.querySelector("#modal-gallery-add-work")
     addBtnNewProject.addEventListener("click", (e) => {
-        console.log("add new project")
-        _openModal("#modal-work-new-image")
+        resetModal()
+        startModal("#modal-work-new-image")
     })
 
     const modalNew = document.querySelector("#modal-work-new-image")
     const previousBtn = modalNew.querySelector(".previous-modal")
-    previousBtn.addEventListener("click", (e) => {
-
-        //closeAddModal()
-        _closeModal("#modal-work-new-image")
+    previousBtn.addEventListener("click", (e) => {        
+        stopModal("#modal-work-new-image")
     })
 }
 
@@ -101,12 +99,9 @@ const openModalEdition = () => {
         trashCanIcon.classList.add("trash-img", "trash-icon","far", "fa-trash-can")
         trashCanIcon.addEventListener("click", async (e) => {
             const deleted = await deleteWork(card.id)
-              if(deleted){
-                console.log(`project ${card.id} deleted, inTitle.textcontent`)
-                outFrame.remove()
-                card.remove()
-            } else {
-                console.log(`project ${card.id} not deleted, inTitle.textcontent`)
+            if(deleted) {
+            outFrame.remove()
+            card.remove()
             }
         })
         
@@ -117,158 +112,111 @@ const openModalEdition = () => {
         modalBody.appendChild(outFrame)
     })
     
-    _openModal("#modal-gallery")
+    startModal("#modal-gallery")
 }
 
 // preview for add new image
 const previewNoImg = document.getElementById("preview-no-image");
 const previewImg = document.getElementById("preview-image");
-const modalInputImage = document.getElementById("modal-work-image")
+const modalInputImage = document.getElementById("modal-work-image");
 let imageData = null
-
-
-/*const closeAddModal =() => {
-    if(previewImg.classList === "hidden") {
-        -closeModal("#modal-work-new-image")    
-    }
-    previewImg.classList.add("hidden")
-    previewNoImg.classList.remove("hidden")
-    document.querySelector(".container-add-img-btn").classList.remove("hidden")
-    -closeModal("#modal-work-new-image")
-}*/
 
 modalInputImage.onchange = (e) => {
     const data = e.target.files[0]
-    if(data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg" || data.type === "image/webp") {
-        
-        if(data.size > 400000000){
-            return alert("Image trop lourde !")
+    if (data.type === "image/jpeg" || data.type === "image/png" || data.type === "image/jpg" || data.type === "image/webp") {
+        if (data.size > 400000000) {
+            alert("Image trop lourde !")
+            return
         }
-        
-        imageData = data
-        
-        previewImg.src = URL.createObjectURL(data)
-        
-        previewImg.classList.remove("hidden")
-        previewNoImg.classList.add("hidden")
-        document.querySelector(".container-add-img-btn").classList.add("hidden")
-        document.querySelector(".container-add-img").style.padding = "0 0";
-        
+        showPreview(data)
     } else {
-        imageData = null
         alert("not an image")
-        previewImg.classList.remove("hidden")
-        previewNoImg.classList.add("hidden")
-        document.querySelector(".container-add-img-btn").classList.remove("hidden")
-        document.querySelector(".container-add-img").style.padding = "10px 0";
+        hidePreview()
     }
 }
 
-
-
-// récupération du titre et de la catégorie
-
-/*function getTitle(){
-    return document.getElementById("select-title").value;
-    
+const hidePreview = () => {
+    imageData = null
+    previewImg.classList.add("hidden")
+    previewNoImg.classList.remove("hidden")
+    document.querySelector(".container-add-img-btn").classList.remove("hidden")
+    document.querySelector(".container-add-img").style.padding = "10px 0";
 }
 
-function getCat() {
-    return document.getElementById("category-id").value
-    
-}*/
-
-let feildsInfo = []
-
-function getfeildsInfo() {
-    feildsInfo.push(document.getElementById("select-title").value);
-    feildsInfo.push(document.getElementById("category-id").value);
-    //console.log("checking content of variable feildsInfo : " + feildsInfo)
-    return feildsInfo
+const showPreview = (data) => {
+    imageData = data
+    previewImg.src = URL.createObjectURL(data)
+    previewImg.classList.remove("hidden")
+    previewNoImg.classList.add("hidden")
+    document.querySelector(".container-add-img-btn").classList.add("hidden")
+    document.querySelector(".container-add-img").style.padding = "0 0";
 }
 
-// feilds check test
-const feildsCheckTest = document.querySelector(".image-requester");
-let titleFeildTest = document.getElementById("select-title");
-let CategoryFeildTest = document.getElementById("category-id");
+const resetModal = () => {
+    hidePreview()
+    document.getElementById("select-title").value = "";
+    document.getElementById("category-id").value = "";
+    fieldsValidate()
+}
 
-//let titleFeildTest = getTitle()
-//let CategoryFeildTest = getCat()
-
-feildsCheckTest.onchange = () => {
-    if(imageData === null || titleFeildTest.value.length<3 || CategoryFeildTest.value === "0") {
-        //console.log("one or all fields missing")
-        document.querySelector(".btn-validate input").style.background = "#A7A7A7";
-    } else {
-        //console.log("all fields ok")
-        document.querySelector(".btn-validate input").style.background = "#1D6154";
+// get title & the category info
+function getFieldsInfo() {
+    return {
+        title: document.getElementById("select-title")?.value,
+        categoryId: document.getElementById("category-id")?.value,
     }
-    //console.log("checking feilds title : " + titleFeildTest.value)
-    //console.log("checking feilds category : " + CategoryFeildTest.value)
 }
+
+// fields check test
+const fieldsValidate = () => {
+    const button = document.querySelector(".btn-validate input")
+    if (imageData === null || getFieldsInfo().title.length<3 || getFieldsInfo().categoryId === "0") {
+        button.disabled = true
+    } else {    
+        button.disabled = false
+    }
+}
+
+document.querySelector(".image-requester").onchange = fieldsValidate;
 
 // envoie de la nouvelle image dans la galerie
-
 const submitNewImgBtn = document.getElementById("form-work-new-image")
 
 submitNewImgBtn.addEventListener("submit", async (e) => {
-    const titre = getfeildsInfo()[0]; //getTitle();
-    const category = getfeildsInfo()[1]; //getCat();
+    const titre = getFieldsInfo().title;
+    const categorie = getFieldsInfo().categoryId;
     e.stopPropagation()
     e.preventDefault()
 
-    if(titre.length<3) {
+    if( titre.length<3) {
         alert("Titre trop court")
         return null
-    } else if(category === undefined || category === null || category === "0") {
-        alert("Categorie non définie")
+    } else if (categorie === undefined || categorie === null || categorie === "0") {
+        alert("Catégorie non définie")
         return null
     } else if (!imageData) {
-        alert("Pas d'image selectionner")
+        alert("Pas d'image selectionnée")
         return null
     }
-    
-    
-    
+      
     const formData = new FormData();
     
     formData.append("image", imageData);
     formData.append("title", titre);
-    formData.append("category", category);
-    console.log(category)
+    formData.append("category", categorie);
     
-
     const result = await sendWork(formData)
-    console.log(result)
-    if(!result) {
-        console.log("Something wrong")
-        return null
-    }
-    console.log(result)
+    if (!result) return null
+
     createCard(result, document.querySelector(".gallery"))
-    //closeAddModal()
-    _closeModal("#modal-work-new-image")
-    _closeModal("#modal-gallery")
+    stopModal("#modal-work-new-image")
+    stopModal("#modal-gallery")
 })
 
 
 // delete project
 const deleteGallery = () => {
-    console.log("delete gallery")
     const gallery = document.querySelector(".gallery")
     gallery.innerHTML=""
     openModalEdition()
 }
-
-
-
-
-//let newImgUrl = document.getElementById("preview-image").getAttribute("src")
-
-/* 
-- faire en sorte que quand on quite l'ajout d'image, les choix et l'ajout d'image soit remise à zero.
-
-- quand on clique su valider, cela doit ajouter à la galerie la nouvelle immage, avec son nom et sa categorie et l'afficher.
-
-- quand on clique sur "publier", la nouvelle galerie est sauvegarder dans le backend.
-*/

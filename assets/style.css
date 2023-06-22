@@ -197,6 +197,7 @@ li:hover {
     display: flex;
     align-items: center;
     margin: 0 57px ;
+    gap: 25px;
 }
 
 #introduction figure {
@@ -364,11 +365,12 @@ button,
     display: none !important;
 }
 
-.login-error{
+.login-error {
     color: red;
     font-weight: bold;
     font-size: 18px;
     padding: 5px;
+    text-align: center;
 }
 
 /*------ Filter ------*/
@@ -682,7 +684,9 @@ aside {
 }
 
 .container-add-img-btn {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     position: relative;
     overflow: hidden;
 }
@@ -709,7 +713,6 @@ aside {
     text-align: center;
     font-size: 11px;
     font-weight: 400;
-    margin-bottom: 19px;
 }
 
 .container-image-requester-form {
@@ -758,7 +761,6 @@ aside {
     height: 0;  
 }
 
-
 .btn-validate input {
     display: flex;
     justify-content: center;
@@ -768,12 +770,12 @@ aside {
     font-size: 14px;
     width: 237px;
     height: 36px;
-    background: #A7A7A7;
     border: none;
     border-radius: 60px;
     color:white;
+    background: #1D6154;
 }
 
-.btn-validate input:required {
-    background: #1D6154;
+.btn-validate input:disabled {
+    background: #A7A7A7;
 }

@@ -10,19 +10,21 @@ export function initToken () {
     );
 }
 
-const ILLEGAL_USERID = ["null", "undefined", "NaN", ""]
+// Verifie UserId & setting Token
+const ILLEGAL_USERID = ["null", "undefined", "NaN", ""];
 
 export function setToken (token, userId) {
     _loged = (!!token && userId && !ILLEGAL_USERID.includes(userId));
     if (!_loged) {
-        localStorage.removeItem("token")
-        localStorage.removeItem("userId")
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
     } else {
         localStorage.setItem("token", token);
-        localStorage.setItem("userId", userId)
+        localStorage.setItem("userId", userId);
     }
 }
 
+// funtion get authorisation
 export function getAuth() {
     return {
         token: localStorage.getItem("token"),
@@ -30,6 +32,7 @@ export function getAuth() {
     }
 }
 
+// function creat Navigation
 export function createNavigation () {
     const links = [
         {id:"nav-home", link: "./index.html"},
@@ -39,8 +42,6 @@ export function createNavigation () {
         {id:"nav-instagram", link: "https://www.instagram.com/sophiebluel/"},
         {id:"nav-cgu", link: "./legal-mention.html"},
     ];
-
-
     for (let item of links) {
         const element = document.getElementById(item.id);
         if (element) {
@@ -49,12 +50,10 @@ export function createNavigation () {
             }
         }
     }
-
     logButton();
-
 }
 
-
+// function verify token storage on login page
 function logButton () {
     const logedBtn = document.getElementById("nav-login");
     logedBtn.onclick=()=> {
@@ -67,71 +66,57 @@ function logButton () {
     }
 }
 
-
-export function createCard (card, parent){
-    const figure=document.createElement("figure")
-    const img=document.createElement("img")
-    const caption=document.createElement("figcaption")
-    img.src=card.imageUrl
-    img.alt=card.title
-    caption.textContent=card.title
-    figure.id=card.id
-    figure.categoryId=card.categoryId
+//
+export function createCard (card, parent) {
+    const figure=document.createElement("figure");
+    const img=document.createElement("img");
+    const caption=document.createElement("figcaption");
+    img.src=card.imageUrl;
+    img.alt=card.title;
+    caption.textContent=card.title;
+    figure.id=card.id;
+    figure.categoryId=card.categoryId;
     figure.setAttribute=card.categoryId
-    figure.appendChild(img)
-    figure.appendChild(caption)
-    parent.appendChild(figure)
+    figure.appendChild(img);
+    figure.appendChild(caption);
+    parent.appendChild(figure);
     return figure;
 }
 
-export function createCards (data){
-    const container=document.querySelector(".gallery")
-    //console.log(data)
+//
+export function createCards (data) {
+    const container=document.querySelector(".gallery");
     return data.map((card)=> createCard(card, container));
 }
 
-
-
-export function createFilters (categories){
-    
+//
+export function createFilters (categories) {
     categories.unshift({id:0, name:"Tous"});
-    const container=document.querySelector("#filters")
+    const container=document.querySelector("#filters");
     for (let categorie of categories) {
-        const elem = document.createElement("span")
+        const elem = document.createElement("span");
         elem.textContent = categorie.name;
         elem.id = categorie.id;
         elem.classList.add("btn", "filter");
-
         container.appendChild(elem);
     }
-
-    selectCategory (container.querySelector("span"));
-    
+    selectCategory(container.querySelector("span"));
 }
 
+//
 export function createSelectCats (selectCats) {
-    const selectContainer=document.querySelector("#category-id")
-    
+    const selectContainer=document.querySelector("#category-id");
     for (let selectCat of selectCats) {
         if(selectCat.id === 0) {
-            const selectElem = document.createElement("option")
-            selectElem.textContent = ""
-            selectElem.value = selectCat.id
+            const selectElem = document.createElement("option");
+            selectElem.textContent = "";
+            selectElem.value = selectCat.id;
             selectContainer.appendChild(selectElem);
         } else {
-            const selectElem = document.createElement("option")
-            selectElem.textContent = selectCat.name
-            selectElem.value = selectCat.id
+            const selectElem = document.createElement("option");
+            selectElem.textContent = selectCat.name;
+            selectElem.value = selectCat.id;
             selectContainer.appendChild(selectElem);
         }
     }
-
-    /*for (let selectCat of selectCats) {
-        if (selectCat.id === 0) continue; {
-            const selectElem = document.createElement("option")
-            selectElem.textContent = selectCat.name
-            selectElem.value = selectCat.id
-            selectContainer.appendChild(selectElem);
-        }
-    }*/
 }

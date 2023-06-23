@@ -1,16 +1,16 @@
-import { modifyButton } from "./modifyIcon.js"
+import { modifyButton } from "./modifyIcon.js";
 
 export const editorPanel = (parent=null) => {
-    const div = document.createElement("div")
-    div.classList.add("editor-Mod", "hidden")
-    modifyButton("Mode édition", div)
+    const div = document.createElement("div");
+    div.classList.add("editor-Mod", "hidden");
+    modifyButton("Mode édition", div);
     
-    const publishing =  document.createElement("span")
-    publishing.textContent = "publier les changements"
-    publishing.id = "publishing"
-    div.appendChild(publishing)
+    const publishing =  document.createElement("span");
+    publishing.textContent = "publier les changements";
+    publishing.id = "publishing";
+    div.appendChild(publishing);
 
-    parent && parent.appendChild(div)
+    parent && parent.appendChild(div);
 
     return div;
 }

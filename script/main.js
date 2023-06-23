@@ -3,14 +3,9 @@ import { createNavigation, createCards, createFilters, initToken, createSelectCa
 import { loadCategoriesEventListener } from "./filter.js";
 import { initEdition, enableEdition } from "./edition.js";
 import { loadCategories, loadData } from "./dataapi.js";
-//import { prev } from "./modal.js";
-
-
 
 window.onload=async ()=>{
-
     initToken();
-
     loadHeader();
     loadFooter();
     createNavigation();
@@ -21,6 +16,4 @@ window.onload=async ()=>{
     createSelectCats(cats);
     initEdition();
     enableEdition();
-    //prev();
 }
-

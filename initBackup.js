@@ -3,10 +3,11 @@ const readline = require('readline');
 
 const databaseFile = 'database.sqlite';
 const backupFile = 'database.sqlite.bak';
-const packageFile = 'package.json'
+const packageFile = 'package.json';
 
 // Vérification de l'existence des fichiers "database.sqlite", "database.sqlite.bak" et "package.js" 
-if(fs.existsSync(databaseFile) && fs.existsSync(packageFile)) {
+if (fs.existsSync(databaseFile) && fs.existsSync(packageFile)) {
+
     // Vérification de l'existence du fichier de sauvegarde "database.sqlite.bak"
     if (fs.existsSync(backupFile)) {
         const rl = readline.createInterface({
@@ -16,22 +17,20 @@ if(fs.existsSync(databaseFile) && fs.existsSync(packageFile)) {
     
         rl.question(`Le fichier de sauvegarde ${backupFile} existe déjà. Voulez-vous l'écraser ? (O/N) `, (answer) => {
             rl.close();
-    
             if (answer.toLocaleUpperCase() !== 'O') {
                 console.log('Opération annulée. Le fichier de sauvegarde n\'a pas été écrasé.');
                 process.exit(0)
             }
-    
             performBackup();
         });
     } else {
         performBackup();
     }
 } else {
-    if(!fs.existsSync(databaseFile)) {
+    if (!fs.existsSync(databaseFile)) {
         console.error(`Erreur : Le fichiers ${databaseFile} nécessaire n'existe pas.`);
     }
-    if(!fs.existsSync(packageFile)) {
+    if (!fs.existsSync(packageFile)) {
         console.error(`Erreur : Le fichiers ${packageFile} nécessaire n'existe pas.`);
     }
     console.log('Assurez-vous que le fichier existe dans le répertoire courant.');
@@ -40,12 +39,13 @@ if(fs.existsSync(databaseFile) && fs.existsSync(packageFile)) {
 
 
 function performBackup() {
+
     // Copie du fichier "database.sqlite" et renomage de la copie en "database.squlite.bak"
     fs.copyFileSync(databaseFile, backupFile);
     
     // Modification du fichier "package.json"
     fs.readFile(packageFile, 'utf8', (err, data) => {
-        if(err) {
+        if (err) {
             console.error(err);
             return;
         }
@@ -61,7 +61,6 @@ function performBackup() {
                 console.error(err);
                 return;
             }
-    
             console.log('Les opérations de sauvegarde ont été effectuées avec succès !');
         });
     });

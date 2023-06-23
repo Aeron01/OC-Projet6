@@ -4,7 +4,7 @@ Sixième projet du parcours "D'intégrateur web" chez OpenClassroom. L'objectif 
 
 Vous pouvez retrouver la maquette [ici](https://www.figma.com/file/kfKHknHySoTibZfdolGAX6/Desktop?type=design&node-id=0-1&t=ybeVInBB1T6692ps-0)
 
-![screenshot du site](./screenshot/*.png)
+![screenshot du site](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-1.png)
 
 ## Objectifs
 
@@ -118,3 +118,16 @@ password: S0phie
 ````
 
 - Lancer "liveServer" sur index.html.
+
+_Autres capture d'écran du site terminé_
+
+![Autre Screenshot](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-1.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-2.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-3.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-4.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-5.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-6.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-7.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-8.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-9.png)
+![](./screenshot/Capture%20d%E2%80%99%C3%A9cran%20du%202023-06-21-10.png)

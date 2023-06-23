@@ -1,5 +1,6 @@
 import { loged } from "../script/script.js";
 
+//funtion for loading the header
 export function loadHeader(){
     document.querySelector("header").innerHTML=`
     <div class="headerContainer">
@@ -18,8 +19,7 @@ export function loadHeader(){
     logedIn.textContent= loged () ? "logout" : "login";
 }
 
-
-
+// function for loading the footer
 export function loadFooter(){
     document.querySelector("footer").innerHTML=`
     <nav>

@@ -1,45 +1,43 @@
 let modal_Path = []
 
-
 /**
  * 
  * @param {string|HTMLElement} query 
  */
 
-export const openModal = function (query) {
+const openModal = function (query) {
     if (modal_Path.length>0) {
-        stopModal(modal_Path[modal_Path.length-1])
+        stopModal(modal_Path[modal_Path.length-1]);
     }
-    modal_Path.push(query)
-    console.log(modal_Path)
-
-    startModal(query)
+    modal_Path.push(query);
+    startModal(query);
 }
 
-export const closeModal = function (query) {
+const closeModal = function (query) {
     if (modal_Path.length>1 && modal_Path[modal_Path.length-1] === query) {
-        startModal(modal_Path[modal_Path.length-2])
+        startModal(modal_Path[modal_Path.length-2]);
     }
-    modal_Path.splice(indexOffEnd(modal_Path, query), 1)
-
-    stopModal(query)
+    modal_Path.splice(indexOffEnd(modal_Path, query), 1);
+    stopModal(query);
 }
 
+// index for return on previous page
 const indexOffEnd = (arr, query) => {
     for (let i = arr.length -1; i >= 0; i--) {
         if (arr[i] === query) {
-            return i
+            return i;
         }
     }
-    return -1
+    return -1;
 }
 
 /**
  *   callback for close modal
  *   return (Event) e
  *   return(HTMLelement | string) query
-*/
+ */
 
+// function for closing modal
 export const stopModal = function (query) {
     const modal = (typeof query === "string") ? document.querySelector(query) : query;
     if (!modal) return;
@@ -53,18 +51,18 @@ export const stopModal = function (query) {
     modal.querySelector(".js-modal-stop").onclick= null;
 }
 
+// function for opening modal
 export const startModal = function (query) {
-
     const modal = document.querySelector(query);
     modal.classList.remove("hidden");
     modal.removeAttribute("aria-hidden");
     modal.setAttribute("arial-modal", "true");
     function onCloseModal (e) {
-        console.log(query)
-        e.preventDefault()
-        e.stopPropagation()
+        e.preventDefault();
+        e.stopPropagation();
         closeModal(query);
     }
+
     modal.onclick = onCloseModal;
     const btnClose = modal.querySelector(".js-modal-close");
     btnClose.onclick = onCloseModal;
@@ -72,14 +70,16 @@ export const startModal = function (query) {
     modal.querySelector(".js-modal-stop").onclick = stopPropagation;
 }
 
+// stop propagation
 const stopPropagation = function (e) {
-    e.stopPropagation()
+    e.stopPropagation();
 }
 
+// keyboard access
 window.addEventListener("keydown", function (e) {
-    if(e.key === "Escape" || e.key === "Esc") {
-        const allModals = document.querySelectorAll(".modal")
-        allModals.forEach(modal=>(closeModal(modal)))
+    if (e.key === "Escape" || e.key === "Esc") {
+        const allModals = document.querySelectorAll(".modal");
+        allModals.forEach(modal=>(closeModal(modal)));
     }
 });
 

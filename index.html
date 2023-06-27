@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sophie Bluel - Architecte d'intérieur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/98d93a87ae.js" crossorigin="anonymous"></script>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="./assets/style.css">
+        <script src="./script/main.js" type="module"></script>
 </head>
 <body>
 <header></header>
@@ -26,51 +28,11 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+
+        <div id="filters" class="filter-container"></div>
+
+        
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
 		</div>
 	</section>
 	<section id="contact">
@@ -90,7 +52,69 @@
 
 <footer>
 </footer>
-<script src="./script/script.js"></script>
-<script src="./script/main.js"></script>
+
+<!-- Modal Edition projet -->
+<aside id="modal-gallery" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="title-modal">
+    <div class="modal-wrapper js-modal-stop">
+        <div class="modal-head">
+            <span></span>
+            <button class="fas fa-xmark js-modal-close"></button>
+        </div>
+        <h2 id="title-modal">Galerie photo</h2>
+        <div class="actual-images"></div>
+        <div class="container-add-btn">
+            <p class=""></p>
+            <button id="modal-gallery-add-work" >Ajouter une photo</button>
+            <span class="gallery-suppress-btn">Supprimer la galerie</span>
+        </div>
+    </div>
+</aside>
+
+<!-- Modal ajout Projet-->
+<aside id="modal-work-new-image" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="title-modal">
+    <div class="modal-wrapper js-modal-stop">
+        <div class="modal-head">
+            <span class="fas fa-arrow-left previous-modal"></span>
+            <button class="fas fa-xmark js-modal-close"></button>
+        </div>
+        <h2 id="title-modal-img">Ajout photo</h2>
+
+        <form id="form-work-new-image"> <!-- ajout d'une id qui est pas utiliser pour le moment (c'était une id vide avant) -->
+            <div class="image-requester">
+                <div class="container-add-img">
+                    <div class="container-img-preview">
+                        <span id="preview-no-image" class="far fa-image"></span>
+                        <img src="" alt="" class="hidden" id="preview-image" aria-required="true">
+                    </div>
+                    <div class="container-add-img-btn">
+                        <button class="add-img-btn">+ Ajouter photo</button>
+                        <input id="modal-work-image" type="file" name="imageUrl"></input>
+                        <p>jpg, png : 4mo max</p>
+                    </div>
+                </div>
+                <div class="container-image-requester-form">
+                    <div class="new-image-form">
+                        <div class="form-add-img">
+                            <label for="select-title">Titre</label>
+                            <input id="select-title" type="text" name="title" required></input>
+                        </div>
+                        <div class="form-add-img">
+                            <label for="category-id">Catégorie</label>
+                            <select name="category" id="category-id" required>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-btn-validate">
+                <p></p>
+                <div class="btn-validate">
+                    <input type="submit" name="validate-add" value="Valider" disabled>
+                </div>
+            </div>
+        </form>
+    </div>
+</aside>
+
 </body>
 </html>

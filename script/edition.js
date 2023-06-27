@@ -59,7 +59,7 @@ export const enableEdition = () => {
     }  
 }
 
-// open the edition modal
+// open the modal editor
 const openModalEditor = () => {
 
     // get modal editor body
@@ -116,7 +116,7 @@ const openModalEditor = () => {
     startModal("#modal-gallery");
 }
 
-// preview for add new image
+// preview of the new image to add
 const previewNoImg = document.getElementById("preview-no-image");
 const previewImg = document.getElementById("preview-image");
 const modalInputImage = document.getElementById("modal-work-image");
@@ -153,6 +153,7 @@ const showPreview = (data) => {
     document.querySelector(".container-add-img").style.padding = "0 0";
 }
 
+// reset add new picture modal
 const resetModal = () => {
     hidePreview();
     document.getElementById("select-title").value = "";
@@ -168,7 +169,7 @@ function getFieldsInfo() {
     }
 }
 
-// fields check test
+// fields check test to activate the validate button
 const fieldsValidate = () => {
     const button = document.querySelector(".btn-validate input");
     if (imageData === null || getFieldsInfo().title.length<3 || getFieldsInfo().categoryId === "0") {
@@ -189,7 +190,7 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
     e.stopPropagation();
     e.preventDefault();
 
-    if ( titre.length<3) {
+    if (titre.length<3) {
         alert("Titre trop court");
         return null;
     } else if (categorie === undefined || categorie === null || categorie === "0") {

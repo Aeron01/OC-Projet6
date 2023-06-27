@@ -1,9 +1,11 @@
 import { selectCategory } from "./filter.js";
 
 let _loged = false;
+
 export function loged () {
     return _loged;
 }
+
 export function initToken () {
     setToken(localStorage.getItem("token"),
     localStorage.getItem("userId")
@@ -24,7 +26,7 @@ export function setToken (token, userId) {
     }
 }
 
-// funtion get authorisation
+// function for get the authorisation stocked in local storage
 export function getAuth() {
     return {
         token: localStorage.getItem("token"),
@@ -32,7 +34,7 @@ export function getAuth() {
     }
 }
 
-// function creat Navigation
+// function for create the site navigation
 export function createNavigation () {
     const links = [
         {id:"nav-home", link: "./index.html"},
@@ -53,7 +55,7 @@ export function createNavigation () {
     logButton();
 }
 
-// function verify token storage on login page
+// function using token storage on login page to verify if you loged or not
 function logButton () {
     const logedBtn = document.getElementById("nav-login");
     logedBtn.onclick=()=> {
@@ -66,7 +68,7 @@ function logButton () {
     }
 }
 
-//
+// function for creating card for each pictures of the project
 export function createCard (card, parent) {
     const figure=document.createElement("figure");
     const img=document.createElement("img");
@@ -83,13 +85,13 @@ export function createCard (card, parent) {
     return figure;
 }
 
-//
+// function that retrieves data for the creation of all cards
 export function createCards (data) {
     const container=document.querySelector(".gallery");
     return data.map((card)=> createCard(card, container));
 }
 
-//
+// function for creating all categories filters button 
 export function createFilters (categories) {
     categories.unshift({id:0, name:"Tous"});
     const container=document.querySelector("#filters");
@@ -103,7 +105,7 @@ export function createFilters (categories) {
     selectCategory(container.querySelector("span"));
 }
 
-//
+//  category creation function for add new image selection form
 export function createSelectCats (selectCats) {
     const selectContainer=document.querySelector("#category-id");
     for (let selectCat of selectCats) {

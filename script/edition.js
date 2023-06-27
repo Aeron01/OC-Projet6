@@ -218,7 +218,11 @@ submitNewImgBtn.addEventListener("submit", async (e) => {
 
 // delete the project
 const deleteGallery = () => {
+    if (confirm("Êtes vous sur de vouloir supprimer TOUTES la gallery ?")) {
     const gallery = document.querySelector(".gallery");
+    const cards = [...gallery.querySelectorAll("figure")];
+    cards.forEach(card => deleteWork(card.id))
     gallery.innerHTML="";
     openModalEditor();
+    }
 }

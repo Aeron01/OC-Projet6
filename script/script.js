@@ -78,7 +78,7 @@ export function createCard (card, parent) {
     caption.textContent=card.title;
     figure.id=card.id;
     figure.categoryId=card.categoryId;
-    figure.setAttribute=card.categoryId
+    figure.setAttribute("categoryId", card.categoryId)
     figure.appendChild(img);
     figure.appendChild(caption);
     parent.appendChild(figure);

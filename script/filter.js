@@ -21,7 +21,7 @@ export function selectCategory (categorieElement){
     for(let picture of pictures) {              
         picture.classList.add("hidden");
 
-        if (tag === picture.categoryId || tag === 0){
+        if (tag === +picture.categoryId || tag === 0){
             picture.classList.remove("hidden");
         }
     }

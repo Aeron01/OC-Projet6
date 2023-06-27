@@ -789,3 +789,19 @@ aside {
 .btn-validate input:disabled {
     background: #A7A7A7;
 }
+
+/*--- card container ---*/
+.gallery figure, .preview-picture {
+    width: 100%;
+    height: 100%;
+
+}
+.preview-picture {
+    height: 130px;
+}
+
+/*--- card image ---*/
+.gallery figure img, .preview-picture img {
+    height: 100%;
+    object-fit: cover;
+}

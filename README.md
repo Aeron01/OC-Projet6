@@ -128,7 +128,6 @@ Pour pour pouvoir effectuer vos tests sans devoir récupérer la base de donnée
 
       ```terminal
       npm run backup
-
       ```
 
   <hr>

@@ -126,9 +126,9 @@ Pour pour pouvoir effectuer vos tests sans devoir récupérer la base de donnée
 
 - Voici la commande a taper dans le terminal du Backend pour restaurer la database :
 
-      ```terminal
-      npm run backup
-      ```
+```terminal
+npm run backup
+```
 
   <hr>
 

@@ -5,6 +5,14 @@ const databaseFile = 'database.sqlite';
 const backupFile = 'database.sqlite.bak';
 const packageFile = 'package.json';
 
+const env = "LINUX" // "WINDOWS" | "LINUX" | "MACOS"
+const remove_commands = new Map();
+remove_commands.set("LINUX", "rm -f database.sqlite && cp -f database.sqlite.bak database.sqlite");
+remove_commands.set("MACOS", "rm -f database.sqlite && cp -f database.sqlite.bak database.sqlite");
+remove_commands.set("WINDOWS", "del /f database.sqlite && copy database.sqlite.bak database.sqlite");
+const remove_cmd = remove_commands.get(env)
+
+
 // Vérification de l'existence des fichiers "database.sqlite", "database.sqlite.bak" et "package.js" 
 if (fs.existsSync(databaseFile) && fs.existsSync(packageFile)) {
 
@@ -54,7 +62,7 @@ function performBackup() {
         let modifiedData = data.replace(/("test": "echo \\\"Error: no test specified\\\" && exit 1")/, '$1,');
     
         // Ajout de la ligne "backup" en ligne 9
-        modifiedData = data.replace(/("test": "echo \\"Error: no test specified\\" && exit 1")/, '$&,\n    "backup": "rm -f database.sqlite && cp -f database.sqlite.bak database.sqlite"');
+        modifiedData = data.replace(/("test": "echo \\"Error: no test specified\\" && exit 1")/, `$&,\n    "backup": "${remove_cmd}"`);
         // Écriture du fichier modifié
         fs.writeFile(packageFile, modifiedData, 'utf8', (err) => {
             if (err) {

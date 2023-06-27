@@ -15,6 +15,8 @@ Développer :
 3. les modales permettant d'uploader de nouveaux médias et de les supprimés (code à créer aussi de zéro) ;
 4. la possibilité de supprimé toute la galerie (code à créer aussi de zéro).
 
+<hr>
+
 ## Livrables
 
 ### Pages à développer et intégrer selon les maquettes
@@ -32,13 +34,17 @@ Développer :
 
 - **Suppression d'un médias ou du projet**
 
+<hr>
+
 ## Technologies
 
-**Autorisés:** HTML / CSS / Sass / NodeJS
+- **Autorisées:** HTML / CSS / Sass / NodeJS
 
-**Recommandée:** HTML / CSS / Javascript / NodeJS
+- **Recommandées:** HTML / CSS / Javascript / NodeJS
 
-**Interdit:** Frameworks CSS / Inline CSS
+- **Interdites:** Frameworks CSS / Inline CSS
+
+<hr>
 
 ## Notes
 
@@ -61,6 +67,8 @@ Développer :
 - Validation W3C CSS : pas obligatoire dans ce projet mais à passer de préférence, warning autorisés
 - Compatibilité : Dernières versions de Chrome, Firefox & Safari
 
+<hr>
+
 ## Convention nommage commit
 
 Gitmoji https://gitmoji.dev/
@@ -71,53 +79,59 @@ Pour tester simplement & rapidement, je vous invite à :
 
 - Récuperer le Backend [ici](https://github.com/OpenClassrooms-Student-Center/Portfolio-architecte-sophie-bluel.git)
 
+- lancer le serveur Backend :
+  Ouvrir un terminal dans le répertoire du serveur Backend.
+
+- Installer les dépendances du projet !
+
+  ```terminal
+  npm install
+  ```
+
+- lancer le serveur :
+
+  ```terminal
+  npm start
+  ```
+
+- Clonez le projet :
+
+  ```terminal
+  git clone https://github.com/Aeron01/OC-Projet6.git
+  ```
+
+- Compte de test pour Sophie Bluel.
+
+  ```terminal
+  email: sophie.bluel@test.tld
+
+  password: S0phie
+  ```
+
+- Lancer "liveServer".
+
+<hr>
+
+#Restauration du backend
+
 Pour pour pouvoir effectuer vos tests sans devoir récupérer la base de données dans le fichier zip téléchargé, je vous recommande d'effectuer cette procédure qui vous permettra de sauvegarder la base de données et de la réinitialiser en cas de besoin.
 
 - Dans le répertoire racine du Backend, faite une copie du fichier "database.sqlite" et, la renomer en "database.sqlite.bak" ;
 
-- Ouvrez avec un editeur de texte ou votre editeur de code, le fichier "package.json" et ajouter après la ligne 8 celle ligne :
+- Ouvrez avec un votre editeur de code, le fichier "package.json" et ajouter dans l'objet "scripts" cette ligne :
 
-"backup": "rm -f database.sqlite && cp -f database.sqlite.bak database.sqlite"
+  - MAC/Linux `"backup": "rm -f database.sqlite && cp -f database.sqlite.bak database.sqlite",`
 
-- Rajouter une virgule à la fin de la ligne 8 et sauvegarder le fichier.
+  - Windows `"backup": "del /f database.sqlite && copy database.sqlite.bak database.sqlite",`
 
-- Voici la commande a taper dans le terminal du bakend pour récupérer le projet par defaut du serveur :
+- Voici la commande a taper dans le terminal du Backend pour restaurer la database :
 
-```terminal
-npm run backup
+      ```terminal
+      npm run backup
 
-```
+      ```
 
-- lancer le serveur Backend :
-  Ouvrir un terminal dans le repertoir du serveur backend.
-
-Installer les dépendances du projet.
-
-```terminal
-npm install
-```
-
-- lancer le serveur :
-
-````terminal
-npm start
-```
-
-- Clonez le projet :
-
-```terminal
-git clone https://github.com/Aeron01/OC-Projet6.git
-```
-
-- Compte de test pour Sophie Bluel.
-
-```terminal
-email: sophie.bluel@test.tld
-
-password: S0phie
-````
-
-- Lancer "liveServer" sur index.html.
+  <hr>
 
 _Autres capture d'écran du site terminé_
 

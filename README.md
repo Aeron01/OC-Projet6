@@ -1,6 +1,6 @@
 # Portfolio architecte Sophie Bluel
 
-Sixième projet du parcours "D'intégrateur web" chez OpenClassroom. L'objectif est de créez une page web dynamique avec JavaScript et NodeJS.
+Sixième projet du parcours "d'intégrateur web" chez OpenClassroom. L'objectif est de créez une page web dynamique avec JavaScript et NodeJS.
 
 Vous pouvez retrouver la maquette [ici](https://www.figma.com/file/kfKHknHySoTibZfdolGAX6/Desktop?type=design&node-id=0-1&t=ybeVInBB1T6692ps-0)
 

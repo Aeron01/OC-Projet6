@@ -31,13 +31,12 @@ const indexOffEnd = (arr, query) => {
     return -1;
 }
 
+// function for closing modal
 /**
  *   callback for close modal
  *   return (Event) e
- *   return(HTMLelement | string) query
+ *   @param {HTMLelement|string} query
  */
-
-// function for closing modal
 export const stopModal = function (query) {
     const modal = (typeof query === "string") ? document.querySelector(query) : query;
     if (!modal) return;
@@ -70,12 +69,12 @@ export const startModal = function (query) {
     modal.querySelector(".js-modal-stop").onclick = stopPropagation;
 }
 
-// stop propagation
+// stop propagation of an event
 const stopPropagation = function (e) {
     e.stopPropagation();
 }
 
-// keyboard access
+// keyboard access for WCAG 2.1
 window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.key === "Esc") {
         const allModals = document.querySelectorAll(".modal");

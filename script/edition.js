@@ -64,7 +64,7 @@ const openModalEditor = () => {
 
     // get modal editor body
     const modalBody = document.querySelector("#modal-gallery .actual-images");
-    modalBody.innerHTML="";
+    modalBody.innerHTML = "";
 
     // fill the modal editor
     const cards = document.querySelectorAll(".gallery figure");
@@ -222,7 +222,7 @@ const deleteGallery = () => {
     const gallery = document.querySelector(".gallery");
     const cards = [...gallery.querySelectorAll("figure")];
     cards.forEach(card => deleteWork(card.id))
-    gallery.innerHTML="";
+    gallery.innerHTML = "";
     openModalEditor();
     }
 }

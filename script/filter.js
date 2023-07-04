@@ -3,14 +3,14 @@ export function loadCategoriesEventListener () {
     let categorieElements = document.querySelectorAll("#filters span");
 
     for (let categoryElement of categorieElements) {
-        categoryElement.addEventListener("click", (ev)=>selectCategory(ev.target));
+        categoryElement.addEventListener("click", (ev) => selectCategory(ev.target));
     }
 }
 
 // function for filter category selector 
-export function selectCategory (categorieElement){
+export function selectCategory (categorieElement) {
     let categorieElements = document.querySelectorAll("#filters span");
-    for(let categorieElement of categorieElements){
+    for(let categorieElement of categorieElements) {
         categorieElement.classList.remove("enable");
     }
     categorieElement.classList.add("enable");

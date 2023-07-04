@@ -322,7 +322,6 @@ button,
 }
 
 /*------ Login Page ------*/
-
 .login {
     display: flex;
     flex-direction: column;
@@ -419,14 +418,10 @@ button,
     color: white;
     gap: 25px;
     position: relative;
-    /*z-index: 100;*/
     font-weight: 400;
 }
 
 .editor-btn {
-    /*display: flex;
-    justify-content: center;*/
-    /*gap:12px;*/
     font-size: 14px;
     font-family: 'Work Sans',sans-serif;
     font-weight: 400;
@@ -444,6 +439,7 @@ button,
     border-radius: 60px;
     font-weight: 500;
 }
+
 /*--- Editor & Modal icons ---*/
 
 .modal-head button {
@@ -530,17 +526,10 @@ aside {
     overflow: auto;
     width: 630px;
     height: 731px;
-    /*max-width: calc(630px - 26px);
-    max-height: calc(731px - 85px);*/
     padding: 26px 30px;
     background: white;
     border-radius: 10px;
 }
-
-/*#modalimg .modal-wrapper {
-    overflow: unset;
-    height: 670px;
-}*/
 
 .js-modal-close {
     border: none;
@@ -721,13 +710,6 @@ aside {
     justify-content: center;
 }
 
-/*.container-image-requester-form form {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}*/
-
-
 .new-image-form {
     display: flex;
     flex-direction: column;
@@ -796,6 +778,7 @@ aside {
     height: 100%;
 
 }
+
 .preview-picture {
     height: 130px;
 }

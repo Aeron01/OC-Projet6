@@ -3,7 +3,7 @@ import { createNavigation, setToken } from "./script.js";
 
  
 
-window.onload=async()=>{
+window.onload = async () => {
     loadHeader();
     loadFooter();
     createNavigation();
@@ -28,7 +28,7 @@ window.onload=async()=>{
         };
         
         fetch("http://localhost:5678/api/users/login",options)
-        .then(result=>{
+        .then(result => {
             if (!result.ok) {
                 switch (result.status) {
                     case 404 : throw "Utilisateur non trouvé !";
@@ -38,13 +38,13 @@ window.onload=async()=>{
             }
             return result.json()
         })
-        .then(result=> {
+        .then(result => {
             if (!(result.token&&result.userId)) throw "Problème serveur !";         
             setToken(result.token, result.userId);
-            window.location.href="./index.html";
+            window.location.href = "./index.html";
         })
-        .catch(err=> {
-            logError.textContent=err;
+        .catch(err => {
+            logError.textContent = err;
         });
     }
 }

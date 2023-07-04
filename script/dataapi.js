@@ -9,14 +9,14 @@ const API = HOST + "api/"
  */
 export async function loadData(){
     return await fetch(`${API}works`)
-    .then(response=>{
-        if (!response.ok) throw "données non reçues !"
+    .then(response => {
+        if (!response.ok) throw "Data not received !"
         return response
     })
 
-    .then(response=>response.json())
+    .then(response => response.json())
 
-    .catch(err=>{
+    .catch(err => {
         console.log(err)
         return []
     })
@@ -28,14 +28,14 @@ export async function loadData(){
  */
 export async function loadCategories(){
     return await fetch(`${API}categories`)
-    .then(response=>{
-        if (!response.ok) throw "données non reçues !"
+    .then(response => {
+        if (!response.ok) throw "Data not received !"
         return response
     })
 
     .then(response => response.json())
 
-    .catch(err=>{
+    .catch(err=> {
         console.log(err)
         return []
     })
@@ -57,13 +57,13 @@ export async function deleteWork (id) {
 
     return await fetch(`${API}works/${id}`, option)
     
-    .then(response=>{
+    .then(response => {
 
         if (!authentified(response)) return false
 
         if (!response.ok) {
             if(response.status === 500) {
-             console.log("server error")
+             console.log("Server error")
             }
             return false   
         }
@@ -73,7 +73,7 @@ export async function deleteWork (id) {
         return false
     })
 
-    .catch(err=>{
+    .catch(err => {
         console.log(err)
         return false
     })
@@ -87,7 +87,7 @@ export async function deleteWork (id) {
  */
 function authentified (response) {
     if (response.status === 401) {
-        alert("user not authentified - redirect to login page")
+        alert("User not authentified - Redirect to login page")
         setToken(undefined,undefined)
         window.location.href="./login.html"
         return false
@@ -109,7 +109,7 @@ export async function sendWork (formData) {
         body: formData
     })
     
-    .then(async (response) =>{
+    .then(async (response) => {
 
         if (!authentified(response)) return null
 
@@ -127,7 +127,7 @@ export async function sendWork (formData) {
         return null
     })
 
-    .catch(err=>{
+    .catch(err => {
         console.log(err)
         return null
     })
